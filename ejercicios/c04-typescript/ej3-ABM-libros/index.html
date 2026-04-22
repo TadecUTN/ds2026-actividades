@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+    <h1>Catalogo</h1>
+
+    <div id="filtros">
+        <label for="filtroAutor">Autor a filtrar: </label>
+        <input type="text" id="filtroAutor">
+        <button id="filtrar">Filtrar</button>
+        <button id="disponibles">Solo disponibles</button>
+        <button id="mostrarTodos">Ver todos</button>
+    </div>
+
+    <div id="informacion">
+        <ul id="listado"></ul> <!-- para mostrar los libros -->
+        <p id="stats"></p> <!-- para mostrar cantidad y precio promedio -->
+        <p id="vista"></p> <!-- para describir la informacion que se esta viendo -->
+        <p id="mensaje" style="color:red;"></p> <!-- para manejar mensajes de avisos -->
+    </div>
+
+    <hr>
+
+    <div id="formulario">
+        <form name="Nuevo libro" id="form">
+            <p>
+                <label for="titulo">Titulo: </label>
+                <input type="text" name="titulo" id="titulo" maxlength="50" required>
+            </p>
+            <p>
+                <label for="autor">Autor: </label> 
+                <input type="text" name="autor" id="autor" maxlength="30" required>
+            </p>
+            <p>
+                <label for="genero">Genero: </label>
+                <input type="text" name="genero" id="genero" maxlength="15">
+            </p>
+            <p>
+                <label for="precio">Precio: </label> 
+                <input type="number" name="precio" id="precio" min="1" required>
+            </p>
+            <p>
+                Disponibilidad:
+                <label><input type="radio" name="disponible" id="disponible_si" value="si" required> SI</label>
+                <label><input type="radio" name="disponible" id="disponible_no" value="no" required> NO</label>
+            </p>
+            <p>
+                <button type="submit" id="enviarDatos">Enviar</button>
+                <input type="reset">
+            </p>
+        </form>
+    </div>
+
+    <div id="errorForm"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
