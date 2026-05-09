@@ -3,26 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalogo</title>
+    <title>Catálogo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body style="background-color: #80f2d0;">
+<body style="background-color: #f5f7fa;">
     
-    <nav class="navbar navbar-expand-lg border-bottom border-body" style="background-color: #1cffbb" data-bs-theme="light">
+    <nav class="navbar navbar-expand-lg border-bottom" style="background-color: #74b9ff;" data-bs-theme="light">
+
         <div class="container-fluid">
+
             <a class="navbar-brand display-6" href="index.html">
                 <img src="imagenes/pila-de-libros-de-tres.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="catalogo.html">Catalogo</a>
+                        <a class="nav-link active" aria-current="page" href="catalogo.html">Catálogo</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contacto.html">Contacto</a>
@@ -32,6 +35,53 @@
         </div>
     </nav>
 
+    <div class="container text-center" style="margin-top: 2rem; margin-bottom: 3rem;">
+        
+        <div class="row mb-3">
+            <div class="col text-start">
+                <a href="index.html" class="btn btn-secondary btn-sm">
+                    &larr; Volver al inicio
+                </a>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col">
+                <h1 class="display-5">Catálogo de Libros</h1>
+                <p class="lead">Buscá tu próximo libro favorito</p>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-8 col-lg-6">
+                <div class="card shadow-sm" style="background-color: #ffffff; border: 1px solid #0984e3;">
+                    <div class="card-body">
+                        <div class="input-group">
+                            <input type="text" id="inputBusqueda" class="form-control" placeholder="Escribir título del libro...">
+                            <button class="btn" style="background-color: #0984e3; border-color: #0984e3; font-weight: bold;" id="btnBuscar" type="button">Buscar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p id="mensajeCarga" class="text-secondary fw-bold"></p>
+                <div id="errores"></div>
+            </div>
+        </div>
+
+        <div class="row g-4" id="divResultados">
+            
+            <div class="col-12 text-muted mt-5">
+                <p><i>Los resultados de la búsqueda aparecerán aquí...</i></p>
+            </div>
+            
+        </div>
+
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <script type="module" src="js/app.js"></script> </body>
 </html>
