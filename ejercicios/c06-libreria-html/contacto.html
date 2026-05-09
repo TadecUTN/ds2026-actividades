@@ -32,6 +32,33 @@
         </div>
     </nav>
 
+    <div class="container" style="padding: 2rem; margin-top: 2rem; background-color: #74b9ff;">
+        <form>
+            <div class="mb-3">
+                <label for="inputNombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="inputNombre">
+            </div>
+            <div class="mb-3">
+                <label for="inputEmail" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="inputEmail" placeholder="tuEmail@dominio.com">
+            </div>
+            <div class="mb-3">
+                <label for="inputAsunto" class="form-label">Asunto</label>
+                <select class="form-select" aria-label="">
+                    <option selected>Seleccione una opción</option>
+                    <option value="1">Consulta</option>
+                    <option value="2">Reclamo</option>
+                    <option value="3">Sugerencia</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="inputMensaje" class="form-label">Mensaje</label>
+                <textarea class="form-control" id="inputMensaje" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
