@@ -1,23 +1,29 @@
 import LibroOL from "./interfaces";
 
-export const errorBusqueda: number = 1;
-const errorRender: number = 2;
-const errorApi: number = 3;
+export const errorBusqueda: string = 'error-busqueda';
+const errorRender: string = 'error-render';
+const errorApi: string = 'error-api';
 
 const resultados = document.getElementById('divResultados') as HTMLDivElement;
 const errores = document.getElementById('errores') as HTMLDivElement;
 const mensajeCarga = document.getElementById('mensajeCarga') as HTMLParagraphElement;
 
+function escaparHTML(str: string): string {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
 export async function buscarInfoLibros(busqueda: string): Promise<LibroOL[]> {
     try {
         mensajeCarga.textContent = 'Cargando...';
-        const response = await fetch(`https://openlibrary.org/search.json?q=${busqueda}`);
+        const response = await fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(busqueda)}&limit=6`);
 
         if(!response.ok) {
             throw new Error(`HTTP ${response.status}`);
         }
         const datos = await response.json();
-        return datos.docs;;
+        return datos.docs;
 
     } catch (error) {
         mostrarError(`Error al obtener libros: ${error}`, errorApi);
@@ -26,7 +32,7 @@ export async function buscarInfoLibros(busqueda: string): Promise<LibroOL[]> {
 }
 
 function obtenerUrlImagen(cover: number): string {
-    const imgPorDefecto = 'https://via.placeholder.com/150x200?text=Sin+Portada';
+    const imgPorDefecto = 'https://placehold.co/150x200?text=Sin+Portada';
     if (!cover) return imgPorDefecto;
 
     return `https://covers.openlibrary.org/b/id/${cover}-M.jpg`;
@@ -36,73 +42,77 @@ export async function renderizarResultados(libros: LibroOL[]) {
     mensajeCarga.textContent = '';
 
     if (libros.length > 0) {
+        let html = '';
         let cont = 0;
 
         for (const l of libros) {
 
-            let titulo = l.title;
+            const titulo = escaparHTML(l.title);
 
             let autor = 'Desconocido';
             if (l.author_name && l.author_name.length > 0) {
-                autor = l.author_name[0];
+                autor = escaparHTML(l.author_name[0]);
             }
-            let publicacion = 'Desconocido'
+
+            let publicacion = 'Desconocido';
             if (l.first_publish_year) {
-                publicacion = l.first_publish_year;
+                publicacion = escaparHTML(String(l.first_publish_year));
             }
 
-            const columna = document.createElement('div');
-            columna.className = 'col-sm-4 mb-4';
+            const cover: string = obtenerUrlImagen(l.cover_i);
 
-            const cardPadre = document.createElement('div');
-            cardPadre.className = 'card h-100 shadow-sm border-info';
+            const autorRaw = (l.author_name && l.author_name.length > 0) ? l.author_name[0] : 'Desconocido';
 
-            const cardBody = document.createElement('div');
-            cardBody.className = 'card-body';
+            html += `
+                <div class="col-sm-4 mb-4">
+                    <div class="card h-100 shadow-sm border-info">
+                        <div class="card-body">
+                            <h5 class="card-title">${titulo}</h5>
+                            <img class="img-fluid rounded shadow-lg" src="${cover}" alt="Portada de ${titulo}">
+                            <p class="card-text"><b>Autor:</b> ${autor}</p>
+                            <p class="card-text"><small class="text-muted">Publicado en: ${publicacion}</small></p>
+                            <a href="libro.html?titulo=${encodeURIComponent(l.title)}&autor=${encodeURIComponent(autorRaw)}&cover=${encodeURIComponent(cover)}" class="btn btn-info btn-sm">Ver Más</a>
+                        </div>
+                    </div>
+                </div>
+            `;
 
-            const imagenLibro = document.createElement('img');
-            const urlImg: string = obtenerUrlImagen(l.cover_i);
-            imagenLibro.className = 'img-fluid rounded shadow-lg';
-            imagenLibro.src = urlImg;
-
-            const parrafoTitulo = document.createElement('h5');
-            parrafoTitulo.className = 'card-title';
-            parrafoTitulo.textContent = titulo;
-
-            const parrafoAutor = document.createElement('p');
-            parrafoAutor.className = 'card-text';
-            parrafoAutor.textContent = `Autor: ${autor}`;
-
-            const  parrafoPublicacion = document.createElement('p');
-            parrafoPublicacion.className = 'card-text';
-            const compParrafoPubli = document.createElement ('small');
-            compParrafoPubli.className = 'text-muted';
-            compParrafoPubli.textContent = `Publicado en ${publicacion}`;
-            parrafoPublicacion.appendChild(compParrafoPubli);
-
-            const linkVerMas = document.createElement('a');
-            linkVerMas.href = 'libro.html';
-            linkVerMas.className = 'btn btn-info btn-sm';
-            linkVerMas.textContent = 'Ver Más';
-
-            cardBody.appendChild(parrafoTitulo);
-            cardBody.appendChild(imagenLibro);
-            cardBody.appendChild(parrafoAutor);
-            cardBody.appendChild(parrafoPublicacion);
-            cardBody.appendChild(linkVerMas);
-
-            cardPadre.appendChild(cardBody);
-
-            columna.appendChild(cardPadre);
-
-            resultados.appendChild(columna);
-
-            cont ++;
+            cont++;
             if (cont === 6) break;
         }
+
+        resultados.innerHTML = html;
     } else {
         mostrarError('No hay resultados', errorRender);
         return;
+    }
+}
+
+export const cargarDetalleLibro = (): void => {
+    const params = new URLSearchParams(window.location.search);
+    const titulo = params.get("titulo");
+    const autor = params.get("autor");
+    const cover = params.get("cover");
+
+    if(cover) {
+        const divImg = document.getElementById('portadaLibro');
+        if(divImg) {
+            const img = document.createElement('img');
+            img.src = cover;
+            img.className = 'img-fluid rounded shadow-lg';
+            img.alt = titulo ? `Portada de ${titulo}` : 'Portada del libro';
+            divImg.appendChild(img);
+        }
+    }
+
+    if(titulo) {
+        const h1Titulo = document.getElementById('tituloLibro');
+        if(h1Titulo) h1Titulo.textContent = titulo;
+    }
+
+    if(autor) {
+        const pAutor = document.getElementById('autor');
+        if(pAutor) pAutor.textContent = autor;
     }
 }
 
@@ -114,14 +124,14 @@ export const limpiarPantalla = () => {
     borrarError(errorRender);
 }
 
-export const mostrarError = (textoError: string, id: number) => {
+export const mostrarError = (textoError: string, id: string) => {
     const error = document.createElement('p');
-    error.textContent = `${textoError}`
-    error.id = `${id}`;
+    error.textContent = textoError;
+    error.id = id;
     errores.appendChild(error);
 }
 
-export const borrarError = (id: number) => {
-    const errorBorrar = document.getElementById(`${id}`);
+export const borrarError = (id: string) => {
+    const errorBorrar = document.getElementById(id);
     if (errorBorrar) errores.removeChild(errorBorrar);
 }
