@@ -1,0 +1,9 @@
+:root {
+    --color-primario: #74b9ff;
+    --color-fondo: #f5f7fa;
+    --color-acento: #0984e3;
+}
+
+body {
+    background-color: var(--color-fondo);
+}

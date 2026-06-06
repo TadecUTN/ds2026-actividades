@@ -1,0 +1,68 @@
+:root {
+    --color-primario: #74b9ff;
+    --color-fondo: #f5f7fa;
+    --color-acento: #0984e3;
+}
+
+.navbar-custom {
+    background-color: var(--color-primario);
+}
+
+.seccion-bienvenida {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.card-libro {
+    width: 18rem;
+}
+
+.card-catalogo {
+    background-color: var(--color-primario);
+}
+
+.btn-buscar {
+    background-color: var(--color-acento);
+    border-color: var(--color-acento);
+    color: #fff;
+    font-weight: bold;
+}
+
+.btn-buscar:hover {
+    background-color: #0773c5;
+    border-color: #0773c5;
+    color: #fff;
+}
+
+.btn-libro {
+    background-color: var(--color-primario);
+}
+
+.btn-libro:hover {
+    background-color: #5fa8f5;
+}
+
+.btn-secundario {
+    background-color: var(--color-primario);
+}
+
+.btn-secundario:hover {
+    background-color: #5fa8f5;
+}
+
+.precio-box {
+    background-color: var(--color-primario);
+}
+
+.formulario-contacto {
+    padding: 2rem;
+    margin-top: 2rem;
+    background-color: var(--color-primario);
+    border-radius: 0.375rem;
+}
+
+.promo-banner {
+    background-color: var(--color-acento);
+    color: white;
+    border: none;
+}
