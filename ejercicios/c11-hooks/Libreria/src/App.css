@@ -1,0 +1,147 @@
+/* Estilos generales de la aplicación */
+h1, h2, h3, .fuente-titulo {
+    font-family: var(--fuente-titulos);
+    color: var(--color-texto-principal);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+h2 {
+    position: relative;
+    padding-bottom: 12px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-primario);
+    border-radius: 2px;
+}
+
+/* Efecto Vidrio Esmerilado (Glassmorphism) */
+.tarjeta-vidrio {
+    background: rgba(18, 18, 23, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-borde);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.tarjeta-vidrio:hover {
+    border-color: var(--color-borde-enfocado);
+    box-shadow: 0 12px 40px 0 rgba(212, 175, 55, 0.1);
+    transform: translateY(-4px);
+}
+
+/* Botones Premium */
+.btn-oro-primario {
+    background: linear-gradient(135deg, var(--color-primario) 0%, #b8962d 100%);
+    border: none;
+    color: #0a0a0c !important;
+    font-family: var(--fuente-cuerpo);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    padding: 10px 24px;
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-oro-primario:hover {
+    background: linear-gradient(135deg, #e5be3e 0%, var(--color-primario) 100%);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+    transform: translateY(-1px);
+}
+
+.btn-oro-primario:active {
+    transform: translateY(1px);
+}
+
+.btn-oro-esquema {
+    background: transparent;
+    border: 2px solid var(--color-primario);
+    color: var(--color-primario) !important;
+    font-family: var(--fuente-cuerpo);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    padding: 8px 22px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.btn-oro-esquema:hover {
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--color-acento) !important;
+    border-color: var(--color-acento);
+}
+
+/* Banner de Promoción */
+.banner-promo {
+    background: linear-gradient(135deg, rgba(21, 21, 28, 0.9) 0%, rgba(35, 30, 20, 0.9) 100%);
+    border: 1px solid var(--color-primario);
+    border-radius: var(--radio-borde);
+    color: var(--color-texto-principal);
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-promo::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+/* Controles de Formulario Premium */
+.form-control-premium {
+    background-color: rgba(26, 26, 36, 0.6) !important;
+    border: 1px solid var(--color-borde) !important;
+    color: var(--color-texto-principal) !important;
+    border-radius: 8px !important;
+    padding: 12px 16px !important;
+    font-family: var(--fuente-cuerpo) !important;
+    transition: all 0.3s ease !important;
+}
+
+.form-control-premium:focus {
+    background-color: rgba(26, 26, 36, 0.9) !important;
+    border-color: var(--color-primario) !important;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2) !important;
+    outline: none;
+}
+
+.form-label-premium {
+    font-family: var(--fuente-cuerpo);
+    color: var(--color-acento);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animacion-entrada {
+    animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

@@ -1,0 +1,162 @@
+[
+    {
+        "id": 1,
+        "title": "BAT PAT EL TESORO DEL CEMENTERIO",
+        "author": "ROBERTO PAVANELLO",
+        "cover": "https://covers.openlibrary.org/b/isbn/9788447800728-M.jpg",
+        "precio": 4500,
+        "disponible": true
+    },
+    {
+        "id": 2,
+        "title": "EL DIARIO DE ANA FRANK",
+        "author": "ANA FRANK",
+        "cover": "https://covers.openlibrary.org/b/isbn/9788415618829-M.jpg",
+        "precio": 5200,
+        "disponible": true
+    },
+    {
+        "id": 3,
+        "title": "EL PRINCIPITO",
+        "author": "ANTOINE DE SAINT-EXUPÉRY",
+        "cover": "https://covers.openlibrary.org/b/isbn/9781515186717-M.jpg",
+        "precio": 3800,
+        "disponible": true
+    },
+    {
+        "id": 4,
+        "title": "GATURRO 15",
+        "author": "NIK",
+        "cover": "https://covers.openlibrary.org/b/isbn/9789876371193-M.jpg",
+        "precio": 4100,
+        "disponible": false
+    },
+    {
+        "id": 5,
+        "title": "HÁBITOS ATÓMICOS",
+        "author": "JAMES CLEAR",
+        "cover": "https://covers.openlibrary.org/b/isbn/9788418118036-M.jpg",
+        "precio": 12500,
+        "disponible": true
+    },
+    {
+        "id": 6,
+        "title": "HARRY POTTER Y LA PIEDRA FILOSOFAL",
+        "author": "J.K ROWLING",
+        "cover": "https://covers.openlibrary.org/b/isbn/9788478884452-M.jpg",
+        "precio": 14000,
+        "disponible": true
+    },
+    {
+        "id": 7,
+        "title": "CLEAN CODE",
+        "author": "ROBERT C. MARTIN",
+        "cover": "https://covers.openlibrary.org/b/isbn/9780132350884-M.jpg",
+        "precio": 22000,
+        "disponible": true
+    },
+    {
+        "id": 8,
+        "title": "1984",
+        "author": "GEORGE ORWELL",
+        "cover": "https://covers.openlibrary.org/b/isbn/9780451524935-M.jpg",
+        "precio": 6700,
+        "disponible": true
+    },
+    {
+        "id": 9,
+        "title": "CIEN AÑOS DE SOLEDAD",
+        "author": "GABRIEL GARCÍA MÁRQUEZ",
+        "cover": "https://covers.openlibrary.org/b/isbn/9780307474728-M.jpg",
+        "precio": 9500,
+        "disponible": true
+    },
+    {
+        "id": 10,
+        "title": "EL HOBBIT",
+        "author": "J.R.R. TOLKIEN",
+        "cover": "https://covers.openlibrary.org/b/isbn/9780261103344-M.jpg",
+        "precio": 11000,
+        "disponible": false
+    },
+    {
+        "id": 11,
+        "title": "RAYUELA",
+        "author": "JULIO CORTÁZAR",
+        "cover": "https://covers.openlibrary.org/b/isbn/9788437604572-M.jpg",
+        "precio": 8900,
+        "disponible": true
+    },
+    {
+        "id": 12,
+        "title": "EL PSICOANALISTA",
+        "author": "JOHN KATZENBACH",
+        "cover": "https://covers.openlibrary.org/b/isbn/9788440693990-M.jpg",
+        "precio": 10500,
+        "disponible": true
+    },
+    {
+        "id": 13,
+        "title": "EL SEÑOR DE LOS ANILLOS: LA COMUNIDAD DEL ANILLO",
+        "author": "J.R.R. TOLKIEN",
+        "cover": "https://covers.openlibrary.org/b/isbn/9780261102354-M.jpg",
+        "precio": 15500,
+        "disponible": true
+    },
+    {
+        "id": 14,
+        "title": "DESIGN PATTERNS",
+        "author": "ERICH GAMMA",
+        "cover": "https://covers.openlibrary.org/b/isbn/9780201633610-M.jpg",
+        "precio": 26000,
+        "disponible": false
+    },
+    {
+        "id": 15,
+        "title": "CRÓNICA DE UNA MUERTE ANUNCIADA",
+        "author": "GABRIEL GARCÍA MÁRQUEZ",
+        "cover": "https://covers.openlibrary.org/b/isbn/9781400034956-M.jpg",
+        "precio": 5800,
+        "disponible": true
+    },
+    {
+        "id": 16,
+        "title": "EL ALQUIMISTA",
+        "author": "PAULO COELHO",
+        "cover": "https://covers.openlibrary.org/b/isbn/9780062511409-M.jpg",
+        "precio": 6200,
+        "disponible": true
+    },
+    {
+        "id": 17,
+        "title": "DON QUIJOTE DE LA MANCHA",
+        "author": "MIGUEL DE CERVANTES",
+        "cover": "https://covers.openlibrary.org/b/isbn/9788420412146-M.jpg",
+        "precio": 13000,
+        "disponible": true
+    },
+    {
+        "id": 18,
+        "title": "EL CÓDIGO DA VINCI",
+        "author": "DAN BROWN",
+        "cover": "https://covers.openlibrary.org/b/isbn/9780307474278-M.jpg",
+        "precio": 9800,
+        "disponible": true
+    },
+    {
+        "id": 19,
+        "title": "ORGULLO Y PREJUICIO",
+        "author": "JANE AUSTEN",
+        "cover": "https://covers.openlibrary.org/b/isbn/9788415618720-M.jpg",
+        "precio": 7400,
+        "disponible": false
+    },
+    {
+        "id": 20,
+        "title": "METAMORFOSIS",
+        "author": "FRANZ KAFKA",
+        "cover": "https://covers.openlibrary.org/b/isbn/9788420651330-M.jpg",
+        "precio": 3500,
+        "disponible": true
+    }
+]
