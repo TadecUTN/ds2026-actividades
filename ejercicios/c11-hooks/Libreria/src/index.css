@@ -1,0 +1,41 @@
+:root {
+    --color-fondo: #0a0a0c;
+    --color-superficie: #121217;
+    --color-superficie-brillante: #181822;
+    --color-primario: #d4af37;
+    --color-primario-hover: #bfa132;
+    --color-acento: #f5f0db;
+    --color-borde: rgba(212, 175, 55, 0.15);
+    --color-borde-enfocado: rgba(212, 175, 55, 0.45);
+    --color-texto-principal: #ffffff;
+    --color-texto-secundario: #a4a7b4;
+    --color-sombra: rgba(0, 0, 0, 0.6);
+    --fuente-titulos: 'Playfair Display', serif;
+    --fuente-cuerpo: 'Montserrat', sans-serif;
+    --radio-borde: 12px;
+}
+
+body {
+    background-color: var(--color-fondo);
+    color: var(--color-texto-principal);
+    font-family: var(--fuente-cuerpo);
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--color-fondo);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--color-superficie-brillante);
+    border: 2px solid var(--color-fondo);
+    border-radius: var(--radio-borde);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primario);
+}
