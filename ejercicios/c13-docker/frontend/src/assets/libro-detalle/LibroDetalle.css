@@ -1,0 +1,87 @@
+.libro-no-encontrado-icon {
+    font-size: 3rem;
+    color: var(--color-primario);
+}
+
+.libro-no-encontrado-text {
+    color: var(--color-texto-secundario);
+}
+
+.detalle-tarjeta {
+    border-radius: 20px !important;
+}
+
+.detalle-col-portada {
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, rgba(18, 18, 23, 0.9) 100%) !important;
+    border-right: 1px solid var(--color-borde);
+}
+
+.detalle-portada-img {
+    max-height: 420px;
+    object-fit: contain;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(212, 175, 55, 0.1);
+}
+
+.detalle-col-info {
+    background: rgba(18, 18, 23, 0.4) !important;
+}
+
+.detalle-badge {
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.detalle-badge-disponible {
+    background-color: rgba(212, 175, 55, 0.15) !important;
+    color: var(--color-primario) !important;
+    border: 1px solid var(--color-primario) !important;
+}
+
+.detalle-badge-agotado {
+    background-color: rgba(255, 75, 75, 0.15) !important;
+    color: #ff5f5f !important;
+    border: 1px solid #ff5f5f !important;
+}
+
+.detalle-rating {
+    color: var(--color-primario);
+    font-size: 0.95rem;
+}
+
+.detalle-titulo {
+    font-family: var(--fuente-titulos) !important;
+    line-height: 1.2 !important;
+}
+
+.detalle-autor {
+    color: var(--color-primario) !important;
+    font-family: var(--fuente-cuerpo) !important;
+    font-weight: 600 !important;
+}
+
+.detalle-divider {
+    border-color: var(--color-borde) !important;
+    margin: 24px 0 !important;
+}
+
+.detalle-sinopsis {
+    color: var(--color-texto-secundario);
+    line-height: 1.8;
+    font-size: 0.95rem;
+    text-align: justify;
+}
+
+.detalle-precio-label {
+    color: var(--color-texto-secundario);
+    font-size: 0.9rem;
+}
+
+.detalle-precio-valor {
+    font-size: 2rem !important;
+    color: var(--color-primario) !important;
+    font-family: var(--fuente-titulos) !important;
+}
