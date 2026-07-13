@@ -22,22 +22,21 @@ services:
       db:
         condition: service_healthy
     environment:
-      - DATABASE_URL=postgresql://${DB_USER}:${DB_PASSWORD}@db:5432/${DB_NAME}
+      - DATABASE_URL=postgresql://postgres:tu_password_segura@db:5432/libreria_db
 
   db:
     image: postgres:16-alpine
     ports:
       - "5432:5432"
-    env_file:
-      - backend/.env
     environment:
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: tu_password_segura
+      POSTGRES_DB: libreria_db
     volumes:
       - pgdata:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}" ]
+      test: [ "CMD-SHELL", "pg_isready -U postgres -d libreria_db" ]
       interval: 10s
       timeout: 5s
       retries: 5
