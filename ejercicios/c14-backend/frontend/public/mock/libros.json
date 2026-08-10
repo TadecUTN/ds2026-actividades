@@ -1,0 +1,162 @@
+[
+    {
+        "id": 1,
+        "title": "BAT PAT EL TESORO DEL CEMENTERIO",
+        "author": "ROBERTO PAVANELLO",
+        "cover": "https://books.google.com/books/content?id=xlCREAAAQBAJ&printsec=frontcover&img=1&zoom=1",
+        "precio": 4500,
+        "disponible": true
+    },
+    {
+        "id": 2,
+        "title": "EL DIARIO DE ANA FRANK",
+        "author": "ANA FRANK",
+        "cover": "https://books.google.com/books/content?id=yeEqDwAAQBAJ&printsec=frontcover&img=1&zoom=1",
+        "precio": 5200,
+        "disponible": true
+    },
+    {
+        "id": 3,
+        "title": "EL PRINCIPITO",
+        "author": "ANTOINE DE SAINT-EXUPÉRY",
+        "cover": "https://books.google.com/books/content?id=n6GS11KD7DwC&printsec=frontcover&img=1&zoom=1",
+        "precio": 3800,
+        "disponible": true
+    },
+    {
+        "id": 4,
+        "title": "GATURRO 15",
+        "author": "NIK",
+        "cover": "https://books.google.com/books/content?id=YU7-CwAAQBAJ&printsec=frontcover&img=1&zoom=1",
+        "precio": 4100,
+        "disponible": false
+    },
+    {
+        "id": 5,
+        "title": "HÁBITOS ATÓMICOS",
+        "author": "JAMES CLEAR",
+        "cover": "https://books.google.com/books/content?id=bSDUDwAAQBAJ&printsec=frontcover&img=1&zoom=1",
+        "precio": 12500,
+        "disponible": true
+    },
+    {
+        "id": 6,
+        "title": "HARRY POTTER Y LA PIEDRA FILOSOFAL",
+        "author": "J.K ROWLING",
+        "cover": "https://books.google.com/books/content?id=8UJaAAAAYAAJ&printsec=frontcover&img=1&zoom=1",
+        "precio": 14000,
+        "disponible": true
+    },
+    {
+        "id": 7,
+        "title": "CLEAN CODE",
+        "author": "ROBERT C. MARTIN",
+        "cover": "https://books.google.com/books/content?id=_i6bDeoCQ3MC&printsec=frontcover&img=1&zoom=1",
+        "precio": 22000,
+        "disponible": true
+    },
+    {
+        "id": 8,
+        "title": "1984",
+        "author": "GEORGE ORWELL",
+        "cover": "https://books.google.com/books/content?id=kotYDwAAQBAJ&printsec=frontcover&img=1&zoom=1",
+        "precio": 6700,
+        "disponible": true
+    },
+    {
+        "id": 9,
+        "title": "CIEN AÑOS DE SOLEDAD",
+        "author": "GABRIEL GARCÍA MÁRQUEZ",
+        "cover": "https://books.google.com/books/content?id=Y6bLDwAAQBAJ&printsec=frontcover&img=1&zoom=1",
+        "precio": 9500,
+        "disponible": true
+    },
+    {
+        "id": 10,
+        "title": "EL HOBBIT",
+        "author": "J.R.R. TOLKIEN",
+        "cover": "https://books.google.com/books/content?id=68V9DwAAQBAJ&printsec=frontcover&img=1&zoom=1",
+        "precio": 11000,
+        "disponible": false
+    },
+    {
+        "id": 11,
+        "title": "RAYUELA",
+        "author": "JULIO CORTÁZAR",
+        "cover": "https://books.google.com/books/content?id=bXg_DwAAQBAJ&printsec=frontcover&img=1&zoom=1",
+        "precio": 8900,
+        "disponible": true
+    },
+    {
+        "id": 12,
+        "title": "EL PSICOANALISTA",
+        "author": "JOHN KATZENBACH",
+        "cover": "https://books.google.com/books/content?id=P6_ADwAAQBAJ&printsec=frontcover&img=1&zoom=1",
+        "precio": 10500,
+        "disponible": true
+    },
+    {
+        "id": 13,
+        "title": "EL SEÑOR DE LOS ANILLOS: LA COMUNIDAD DEL ANILLO",
+        "author": "J.R.R. TOLKIEN",
+        "cover": "https://books.google.com/books/content?id=Z0K4DwAAQBAJ&printsec=frontcover&img=1&zoom=1",
+        "precio": 15500,
+        "disponible": true
+    },
+    {
+        "id": 14,
+        "title": "DESIGN PATTERNS",
+        "author": "ERICH GAMMA",
+        "cover": "https://books.google.com/books/content?id=3u6bDeoCQ3MC&printsec=frontcover&img=1&zoom=1",
+        "precio": 26000,
+        "disponible": false
+    },
+    {
+        "id": 15,
+        "title": "CRÓNICA DE UNA MUERTE ANUNCIADA",
+        "author": "GABRIEL GARCÍA MÁRQUEZ",
+        "cover": "https://books.google.com/books/content?id=iKzLDwAAQBAJ&printsec=frontcover&img=1&zoom=1",
+        "precio": 5800,
+        "disponible": true
+    },
+    {
+        "id": 16,
+        "title": "EL ALQUIMISTA",
+        "author": "PAULO COELHO",
+        "cover": "https://books.google.com/books/content?id=fzZFDwAAQBAJ&printsec=frontcover&img=1&zoom=1",
+        "precio": 6200,
+        "disponible": true
+    },
+    {
+        "id": 17,
+        "title": "DON QUIJOTE DE LA MANCHA",
+        "author": "MIGUEL DE CERVANTES",
+        "cover": "https://books.google.com/books/content?id=uI0_DwAAQBAJ&printsec=frontcover&img=1&zoom=1",
+        "precio": 13000,
+        "disponible": true
+    },
+    {
+        "id": 18,
+        "title": "EL CÓDIGO DA VINCI",
+        "author": "DAN BROWN",
+        "cover": "https://books.google.com/books/content?id=N6_LDwAAQBAJ&printsec=frontcover&img=1&zoom=1",
+        "precio": 9800,
+        "disponible": true
+    },
+    {
+        "id": 19,
+        "title": "ORGULLO Y PREJUICIO",
+        "author": "JANE AUSTEN",
+        "cover": "https://books.google.com/books/content?id=0I0_DwAAQBAJ&printsec=frontcover&img=1&zoom=1",
+        "precio": 7400,
+        "disponible": false
+    },
+    {
+        "id": 20,
+        "title": "METAMORFOSIS",
+        "author": "FRANZ KAFKA",
+        "cover": "https://books.google.com/books/content?id=5I0_DwAAQBAJ&printsec=frontcover&img=1&zoom=1",
+        "precio": 3500,
+        "disponible": true
+    }
+]
