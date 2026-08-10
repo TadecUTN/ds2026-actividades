@@ -132,7 +132,7 @@ function Catalogo() {
             {librosFiltrados.length > 0 ? (
                 <Row className="row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                     {librosFiltrados.map((libro) => (
-                        <Col key={libro.id} className="d-flex justify-content-center">
+                        <Col key={libro.id} className="d-flex align-items-stretch">
                             <LibroCard {...libro} />
                         </Col>
                     ))}
