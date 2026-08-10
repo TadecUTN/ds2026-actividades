@@ -1,4 +1,5 @@
 import type { Libro } from '../types/libro';
+import defaultLibrosData from '../mock/libros.json';
 
 const CUSTOM_LIBROS_STORAGE_KEY = 'lectura_inteligente_custom_libros';
 const DESTACADOS_STORAGE_KEY = 'lectura_inteligente_destacados';
@@ -7,14 +8,20 @@ export const libroService = {
     // Obtiene todos los libros guardados o los carga del archivo original
     async getLibros(): Promise<Libro[]> {
         // Simula una pequeña espera
-        await new Promise((resolve) => setTimeout(resolve, 300));
+        await new Promise((resolve) => setTimeout(resolve, 150));
 
-        const response = await fetch('/mock/libros.json');
-        if (!response.ok) {
-            throw new Error('Error al cargar la información de libros del servidor');
+        let originalLibros: Libro[] = defaultLibrosData as Libro[];
+        try {
+            const response = await fetch('/mock/libros.json');
+            if (response.ok) {
+                const fetched = await response.json();
+                if (Array.isArray(fetched) && fetched.length > 0) {
+                    originalLibros = fetched;
+                }
+            }
+        } catch {
+            // Usa defaultLibrosData si fetch falla
         }
-        
-        const originalLibros: Libro[] = await response.json();
         
         // Obtiene los libros creados por el usuario
         const customCached = localStorage.getItem(CUSTOM_LIBROS_STORAGE_KEY);
