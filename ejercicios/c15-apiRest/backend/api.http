@@ -1,0 +1,60 @@
+@baseUrl = http://localhost:3000
+### Hello
+GET {{baseUrl}}/
+
+### Listar libros
+GET {{baseUrl}}/api/libros
+
+### Autores
+GET {{baseUrl}}/api/autores/2
+
+### Libros disponibles
+GET {{baseUrl}}/api/libros?disponible=true
+
+### Crear un libro
+POST {{baseUrl}}/api/libros
+Content-Type: application/json
+
+{
+  "titulo": "Rayuela",
+  "autor": "Julio Cortázar",
+  "precio": 7000,
+  "imagen": "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=400&q=80",
+  "disponible": true
+}
+
+### Crear un autor
+POST {{baseUrl}}/api/autores
+Content-Type: application/json
+
+{
+  "nombre": "Julio Cortázar",
+  "nacionalidad": "Argentina"
+}
+
+### Actualizar un libro
+PUT {{baseUrl}}/api/libros/1
+Content-Type: application/json
+
+{
+  "titulo": "El Principito",
+  "autor": "Antoine de Saint-Exupéry",
+  "precio": 38000,
+  "imagen": "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=400&q=80",
+  "disponible": true
+}
+
+### Actualizar un autor
+PUT {{baseUrl}}/api/autores/1
+Content-Type: application/json
+
+{
+  "nombre": "de Saint-Exupéry, Antoine",
+  "nacionalidad": "frances"
+}
+
+### Borrar un libro
+DELETE {{baseUrl}}/api/libros/3
+
+### Borrar un autor
+DELETE {{baseUrl}}/api/autores/2
