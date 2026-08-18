@@ -3,12 +3,14 @@
 }
 
 .contacto-form-card {
-    background: rgba(18, 18, 23, 0.65) !important;
+    background: #ffffff !important;
+    border: 1px solid var(--color-borde);
 }
 
 .contacto-form-title {
     font-size: 1.5rem !important;
     color: var(--color-texto-principal) !important;
+    font-family: var(--fuente-titulos);
 }
 
 .contacto-enviado-icon {
@@ -21,7 +23,8 @@
 }
 
 .contacto-info-card {
-    background: rgba(18, 18, 23, 0.4) !important;
+    background: #ffffff !important;
+    border: 1px solid var(--color-borde);
 }
 
 .contacto-info-title {
@@ -37,28 +40,29 @@
 
 .contacto-mapa-container {
     min-height: 220px;
-    background: rgba(18, 18, 23, 0.5) !important;
+    background: #f4efe4 !important;
+    border: 1px solid var(--color-borde);
 }
 
 .contacto-mapa-inner {
-    background: #0d0d11;
-    border: 1px solid rgba(212, 175, 55, 0.05);
+    background: #eae3d2;
+    border: 1px solid var(--color-borde);
     overflow: hidden;
 }
 
 .contacto-mapa-grid {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background-image: radial-gradient(var(--color-borde) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(27, 67, 50, 0.25) 1px, transparent 1px);
     background-size: 20px 20px;
-    opacity: 0.3;
+    opacity: 0.5;
 }
 
 .contacto-mapa-pin-outer {
     position: relative;
     width: 40px;
     height: 40px;
-    background-color: rgba(212, 175, 55, 0.2);
+    background-color: rgba(27, 67, 50, 0.15);
     border: 2px solid var(--color-primario);
     border-radius: 50%;
     cursor: default;
@@ -72,10 +76,11 @@
 }
 
 .contacto-mapa-label {
-    background: rgba(0,0,0,0.6);
+    background: rgba(255, 255, 255, 0.92);
     border: 1px solid var(--color-borde);
     font-size: 0.75rem;
     color: var(--color-primario);
+    font-weight: 600;
     bottom: 10px;
     right: 10px;
 }

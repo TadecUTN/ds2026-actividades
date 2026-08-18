@@ -16,7 +16,7 @@ function LibroDetalle() {
     if (loading) {
         return (
             <Container className="text-center py-5">
-                <Spinner animation="border" variant="warning" />
+                <Spinner animation="border" variant="success" />
                 <p className="mt-3 text-muted">Cargando detalles del libro...</p>
             </Container>
         );
@@ -77,7 +77,7 @@ function LibroDetalle() {
                                     </div>
                                 </div>
 
-                                <h1 className="display-5 fw-bold mb-2 text-white detalle-titulo">{libro.title}</h1>
+                                <h1 className="display-5 fw-bold mb-2 detalle-titulo">{libro.title}</h1>
                                 <h4 className="mb-4 detalle-autor">
                                     por {libro.author}
                                 </h4>

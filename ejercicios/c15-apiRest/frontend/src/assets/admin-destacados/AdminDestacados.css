@@ -10,6 +10,7 @@
 }
 
 .stats-card {
+    background: #ffffff;
     border-radius: var(--radio-borde);
     border: 1px solid var(--color-borde);
     padding: 1.5rem;
@@ -19,6 +20,7 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 1.5rem;
+    box-shadow: 0 4px 15px var(--color-sombra);
 }
 
 .stat-item {
@@ -41,8 +43,11 @@
 }
 
 .admin-filter-card {
+    background: #ffffff;
     border-radius: var(--radio-borde);
+    border: 1px solid var(--color-borde);
     margin-bottom: 2rem;
+    box-shadow: 0 4px 15px var(--color-sombra);
 }
 
 .book-selection-list {
@@ -58,29 +63,30 @@
     padding: 1rem 1.5rem;
     border-radius: 8px;
     border: 1px solid var(--color-borde);
-    background: rgba(18, 18, 23, 0.4);
+    background: #ffffff;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 2px 8px var(--color-sombra);
 }
 
 .book-selection-row:hover {
-    border-color: var(--color-borde-enfocado);
-    background: rgba(18, 18, 23, 0.8);
+    border-color: var(--color-primario);
+    background: #faf8f5;
     transform: translateX(4px);
 }
 
 .book-selection-row.is-featured {
-    border-color: rgba(212, 175, 55, 0.4);
-    background: rgba(212, 175, 55, 0.04);
+    border-color: #a7f3d0;
+    background: #f0fdf4;
 }
 
 .book-row-cover {
     width: 50px;
     height: 70px;
     object-fit: contain;
-    background: #0d0d12;
+    background: #f0ebe1;
     border-radius: 4px;
     margin-right: 1.5rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 10px rgba(44, 34, 22, 0.1);
 }
 
 .book-row-info {
@@ -113,8 +119,8 @@
 
 /* Custom premium switch styling */
 .custom-switch .form-check-input {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.2);
+    background-color: #e5e7eb;
+    border-color: #d1d5db;
     cursor: pointer;
     width: 2.8em;
     height: 1.5em;
@@ -126,7 +132,7 @@
 }
 
 .custom-switch .form-check-input:focus {
-    box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25);
+    box-shadow: 0 0 0 0.25rem rgba(27, 67, 50, 0.2);
 }
 
 .save-alert {
@@ -135,7 +141,6 @@
     right: 2rem;
     z-index: 1050;
     min-width: 300px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 30px rgba(44, 34, 22, 0.15);
     border-left: 5px solid var(--color-primario) !important;
-    backdrop-filter: blur(8px);
 }

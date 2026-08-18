@@ -4,7 +4,7 @@ import '../../assets/shared/Header.css';
 
 function MyNavbar() {
     return (
-        <Navbar expand="lg" className="navbar-personalizada" variant="dark">
+        <Navbar expand="lg" className="navbar-personalizada" variant="light">
             <Container>
                 <Navbar.Brand as={Link} to="/" className="navbar-brand-custom">
                     <img

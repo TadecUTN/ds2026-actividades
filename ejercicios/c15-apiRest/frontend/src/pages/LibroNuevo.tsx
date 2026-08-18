@@ -121,7 +121,7 @@ function LibroNuevo() {
                             name="disponible"
                             checked={form.disponible}
                             onChange={handleChange}
-                            className="text-white-50 nuevo-libro-checkbox"
+                            className="nuevo-libro-checkbox"
                         />
                     </Form.Group>
  

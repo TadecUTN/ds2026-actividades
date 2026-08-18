@@ -68,7 +68,7 @@ export default function AdminDestacados() {
     if (loading) {
         return (
             <Container className="my-5 text-center py-5">
-                <Spinner animation="border" variant="warning" />
+                <Spinner animation="border" variant="success" />
                 <p className="mt-3 text-muted">Cargando panel de destacados...</p>
             </Container>
         );
@@ -99,7 +99,7 @@ export default function AdminDestacados() {
                     <div className="stat-label">Libros Totales</div>
                 </div>
                 <div className="stat-item">
-                    <div className="stat-value text-warning">{selectedIds.length}</div>
+                    <div className="stat-value" style={{ color: 'var(--color-acento)' }}>{selectedIds.length}</div>
                     <div className="stat-label">Destacados Seleccionados</div>
                 </div>
                 <div className="stat-item d-flex gap-2">
@@ -187,7 +187,7 @@ export default function AdminDestacados() {
                     })
                 ) : (
                     <div className="text-center py-5 tarjeta-vidrio p-4">
-                        <p className="mb-0 text-white-50">No se encontraron libros que coincidan con la búsqueda.</p>
+                        <p className="mb-0 text-muted">No se encontraron libros que coincidan con la búsqueda.</p>
                     </div>
                 )}
             </div>
@@ -195,8 +195,8 @@ export default function AdminDestacados() {
             {/* Cartel flotante de éxito */}
             {showSuccess && (
                 <Alert variant="success" className="save-alert text-center py-3">
-                    <strong className="text-white">¡Destacados guardados con éxito!</strong>
-                    <div className="text-white-50 small mt-1">Los cambios se verán reflejados en la Home.</div>
+                    <strong>¡Destacados guardados con éxito!</strong>
+                    <div className="small mt-1 text-muted">Los cambios se verán reflejados en la Home.</div>
                 </Alert>
             )}
         </Container>

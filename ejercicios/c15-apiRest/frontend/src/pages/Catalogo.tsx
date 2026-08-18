@@ -56,7 +56,7 @@ function Catalogo() {
     if (loading) {
         return (
             <Container className="my-5 text-center py-5">
-                <Spinner animation="border" variant="warning" />
+                <Spinner animation="border" variant="success" />
                 <p className="mt-3 text-muted">Cargando catálogo de libros...</p>
             </Container>
         );
@@ -115,7 +115,7 @@ function Catalogo() {
                             label="Mostrar solo disponibles"
                             checked={soloDisponibles}
                             onChange={(e) => setSoloDisponibles(e.target.checked)}
-                            className="text-white fw-semibold catalogo-checkbox"
+                            className="fw-semibold catalogo-checkbox"
                         />
                     </Col>
                 </Row>

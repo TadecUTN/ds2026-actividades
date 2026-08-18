@@ -23,28 +23,26 @@ h2::after {
     border-radius: 2px;
 }
 
-/* Efecto Vidrio Esmerilado (Glassmorphism) */
+/* Tarjetas Estilo Editorial */
 .tarjeta-vidrio {
-    background: rgba(18, 18, 23, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: var(--color-superficie);
     border: 1px solid var(--color-borde);
     border-radius: var(--radio-borde);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    box-shadow: 0 4px 20px var(--color-sombra);
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .tarjeta-vidrio:hover {
     border-color: var(--color-borde-enfocado);
-    box-shadow: 0 12px 40px 0 rgba(212, 175, 55, 0.1);
+    box-shadow: 0 12px 28px rgba(27, 67, 50, 0.12);
     transform: translateY(-4px);
 }
 
-/* Botones Premium */
+/* Botones Editorial */
 .btn-oro-primario {
-    background: linear-gradient(135deg, var(--color-primario) 0%, #b8962d 100%);
+    background: linear-gradient(135deg, var(--color-primario) 0%, #123023 100%);
     border: none;
-    color: #0a0a0c !important;
+    color: #ffffff !important;
     font-family: var(--fuente-cuerpo);
     font-weight: 700;
     text-transform: uppercase;
@@ -52,13 +50,13 @@ h2::after {
     letter-spacing: 0.05em;
     padding: 10px 24px;
     border-radius: 6px;
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+    box-shadow: 0 4px 14px rgba(27, 67, 50, 0.25);
     transition: all 0.3s ease;
 }
 
 .btn-oro-primario:hover {
-    background: linear-gradient(135deg, #e5be3e 0%, var(--color-primario) 100%);
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+    background: linear-gradient(135deg, var(--color-primario-hover) 0%, var(--color-primario) 100%);
+    box-shadow: 0 6px 18px rgba(27, 67, 50, 0.35);
     transform: translateY(-1px);
 }
 
@@ -81,18 +79,18 @@ h2::after {
 }
 
 .btn-oro-esquema:hover {
-    background: rgba(212, 175, 55, 0.1);
-    color: var(--color-acento) !important;
-    border-color: var(--color-acento);
+    background: var(--color-primario);
+    color: #ffffff !important;
+    border-color: var(--color-primario);
 }
 
 /* Banner de Promoción */
 .banner-promo {
-    background: linear-gradient(135deg, rgba(21, 21, 28, 0.9) 0%, rgba(35, 30, 20, 0.9) 100%);
-    border: 1px solid var(--color-primario);
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+    border: 1px solid #fcd34d;
     border-radius: var(--radio-borde);
-    color: var(--color-texto-principal);
-    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15);
+    color: #78350f;
+    box-shadow: 0 4px 20px rgba(180, 83, 9, 0.08);
     position: relative;
     overflow: hidden;
 }
@@ -104,13 +102,13 @@ h2::after {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 60%);
+    background: radial-gradient(circle, rgba(180, 83, 9, 0.05) 0%, transparent 60%);
     pointer-events: none;
 }
 
 /* Controles de Formulario Premium */
 .form-control-premium {
-    background-color: rgba(26, 26, 36, 0.6) !important;
+    background-color: #ffffff !important;
     border: 1px solid var(--color-borde) !important;
     color: var(--color-texto-principal) !important;
     border-radius: 8px !important;
@@ -120,16 +118,16 @@ h2::after {
 }
 
 .form-control-premium:focus {
-    background-color: rgba(26, 26, 36, 0.9) !important;
+    background-color: #ffffff !important;
     border-color: var(--color-primario) !important;
-    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2) !important;
+    box-shadow: 0 0 0 3px rgba(27, 67, 50, 0.15) !important;
     outline: none;
 }
 
 .form-label-premium {
     font-family: var(--fuente-cuerpo);
-    color: var(--color-acento);
-    font-weight: 600;
+    color: var(--color-primario);
+    font-weight: 700;
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
