@@ -1,0 +1,115 @@
+@baseUrl = http://localhost:3000
+
+### 0. Health / Raíz
+GET {{baseUrl}}/
+
+### LIBROS
+
+### 1. Listar todos los libros
+GET {{baseUrl}}/api/libros
+
+### 2. Filtrar libros disponibles
+GET {{baseUrl}}/api/libros?disponible=true
+
+### 3. Filtrar libros no disponibles
+GET {{baseUrl}}/api/libros?disponible=false
+
+### 4. Obtener un libro por ID (existente)
+GET {{baseUrl}}/api/libros/1
+
+### 5. Crear un nuevo libro
+POST {{baseUrl}}/api/libros
+Content-Type: application/json
+
+{
+  "titulo": "Rayuela",
+  "autor": "Julio Cortázar",
+  "precio": 7000,
+  "imagen": "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=400&q=80",
+  "disponible": true
+}
+
+### 6. Actualizar un libro (existente)
+PUT {{baseUrl}}/api/libros/1
+Content-Type: application/json
+
+{
+  "titulo": "El Principito (Edición Especial)",
+  "autor": "Antoine de Saint-Exupéry",
+  "precio": 38000,
+  "imagen": "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=400&q=80",
+  "disponible": true
+}
+
+### 7. Borrar un libro (existente)
+DELETE {{baseUrl}}/api/libros/1
+
+
+### =======================================================
+### AUTORES
+### =======================================================
+
+### 8. Listar todos los autores
+GET {{baseUrl}}/api/autores
+
+### 9. Obtener un autor por ID (existente)
+GET {{baseUrl}}/api/autores/1
+
+### 10. Crear un autor
+POST {{baseUrl}}/api/autores
+Content-Type: application/json
+
+{
+  "nombre": "Jorge Luis Borges",
+  "nacionalidad": "Argentina"
+}
+
+### 11. Actualizar un autor (existente)
+PUT {{baseUrl}}/api/autores/1
+Content-Type: application/json
+
+{
+  "nombre": "Antoine de Saint-Exupéry",
+  "nacionalidad": "Francesa"
+}
+
+### 12. Borrar un autor (existente)
+DELETE {{baseUrl}}/api/autores/1
+
+
+### =======================================================
+### CASOS DE ERROR (404 NOT FOUND)
+### =======================================================
+
+### 13. [404] Obtener libro inexistente
+GET {{baseUrl}}/api/libros/99999
+
+### 14. [404] Actualizar libro inexistente
+PUT {{baseUrl}}/api/libros/99999
+Content-Type: application/json
+
+{
+  "titulo": "No existe",
+  "autor": "Desconocido",
+  "precio": 1000,
+  "imagen": "https://example.com/img.jpg",
+  "disponible": true
+}
+
+### 15. [404] Borrar libro inexistente
+DELETE {{baseUrl}}/api/libros/99999
+
+### 16. [404] Obtener autor inexistente
+GET {{baseUrl}}/api/autores/99999
+
+### 17. [404] Actualizar autor inexistente
+PUT {{baseUrl}}/api/autores/99999
+Content-Type: application/json
+
+{
+  "nombre": "Autor Inexistente",
+  "nacionalidad": "Desconocida"
+}
+
+### 18. [404] Borrar autor inexistente
+DELETE {{baseUrl}}/api/autores/99999
