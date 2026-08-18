@@ -1,18 +1,20 @@
 :root {
-    --color-fondo: #0a0a0c;
-    --color-superficie: #121217;
-    --color-superficie-brillante: #181822;
-    --color-primario: #d4af37;
-    --color-primario-hover: #bfa132;
-    --color-acento: #f5f0db;
-    --color-borde: rgba(212, 175, 55, 0.15);
-    --color-borde-enfocado: rgba(212, 175, 55, 0.45);
-    --color-texto-principal: #ffffff;
-    --color-texto-secundario: #a4a7b4;
-    --color-sombra: rgba(0, 0, 0, 0.6);
+    /* Paleta Editorial / Librería Clásica Clara */
+    --color-fondo: #f7f4ee;
+    --color-superficie: #ffffff;
+    --color-superficie-brillante: #f0ece1;
+    --color-primario: #1b4332;
+    --color-primario-hover: #2d5a47;
+    --color-acento: #b45309;
+    --color-acento-suave: #fdf6e7;
+    --color-borde: #e2dbcc;
+    --color-borde-enfocado: #1b4332;
+    --color-texto-principal: #1c1917;
+    --color-texto-secundario: #68625b;
+    --color-sombra: rgba(44, 34, 22, 0.08);
     --fuente-titulos: 'Playfair Display', serif;
     --fuente-cuerpo: 'Montserrat', sans-serif;
-    --radio-borde: 12px;
+    --radio-borde: 10px;
 }
 
 body {
@@ -32,7 +34,7 @@ body {
     background: var(--color-fondo);
 }
 ::-webkit-scrollbar-thumb {
-    background: var(--color-superficie-brillante);
+    background: #d8d0be;
     border: 2px solid var(--color-fondo);
     border-radius: var(--radio-borde);
 }

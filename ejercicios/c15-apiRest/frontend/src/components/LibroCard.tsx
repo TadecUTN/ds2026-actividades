@@ -30,14 +30,14 @@ function LibroCard({ id, title, author, cover }: Libro) {
                 ) : (
                     <div className="portada-fallback d-flex flex-column align-items-center justify-content-center p-4 text-center">
                         <div className="portada-fallback-icon mb-2">📖</div>
-                        <div className="portada-fallback-title fw-bold text-white mb-1">{title}</div>
-                        <div className="portada-fallback-author small text-white-50">{author}</div>
+                        <div className="portada-fallback-title fw-bold mb-1">{title}</div>
+                        <div className="portada-fallback-author small">{author}</div>
                     </div>
                 )}
             </div>
             <Card.Body className="d-flex flex-column justify-content-between p-4 tarjeta-libro-body">
                 <div className="mb-3">
-                    <Card.Title className="fw-bold text-white mb-2 tarjeta-libro-title">
+                    <Card.Title className="fw-bold mb-2 tarjeta-libro-title">
                         {title}
                     </Card.Title>
                     <Card.Text className="tarjeta-libro-author">

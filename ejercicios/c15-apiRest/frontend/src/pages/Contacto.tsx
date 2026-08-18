@@ -33,7 +33,7 @@ function Contacto() {
                         {enviado ? (
                             <div className="text-center py-4 animacion-entrada">
                                 <div className="mb-3 contacto-enviado-icon">✉</div>
-                                <h4 className="fw-bold text-white">¡Mensaje Enviado!</h4>
+                                <h4 className="fw-bold" style={{ color: 'var(--color-primario)' }}>¡Mensaje Enviado!</h4>
                                 <p className="mb-0 contacto-enviado-text">
                                     Gracias por contactarte con nosotros. Te responderemos a la brevedad.
                                 </p>

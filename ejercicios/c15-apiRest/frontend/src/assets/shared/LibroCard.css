@@ -3,13 +3,16 @@
 }
 
 .tarjeta-libro-title {
-    font-size: 1rem;
+    font-size: 1.05rem;
     line-height: 1.4;
     height: 2.8rem;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    color: var(--color-texto-principal);
+    font-family: var(--fuente-titulos);
+    font-weight: 700;
 }
 
 .tarjeta-libro-author {
@@ -20,6 +23,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-weight: 500;
 }
 
 /* Tarjeta de Libro */
@@ -29,7 +33,7 @@
     border-radius: var(--radio-borde);
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(44, 34, 22, 0.05);
     width: 100% !important;
     min-width: 100% !important;
     max-width: 100% !important;
@@ -39,20 +43,21 @@
 
 .tarjeta-libro:hover {
     transform: translateY(-6px);
-    border-color: var(--color-borde-enfocado);
-    box-shadow: 0 12px 30px rgba(212, 175, 55, 0.12);
+    border-color: rgba(27, 67, 50, 0.35);
+    box-shadow: 0 14px 30px rgba(27, 67, 50, 0.12);
 }
 
 .contenedor-portada {
     position: relative;
     overflow: hidden;
-    background: #0d0d12;
+    background: #f2ece0;
     height: 320px !important;
     width: 100% !important;
     min-width: 100% !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    border-bottom: 1px solid var(--color-borde);
 }
 
 .portada-bg {
@@ -62,8 +67,8 @@
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
-    filter: blur(20px) brightness(0.4);
-    opacity: 0.7;
+    filter: blur(25px) brightness(0.9);
+    opacity: 0.35;
     pointer-events: none;
     transform: scale(1.1);
 }
@@ -76,22 +81,23 @@
     width: auto !important;
     height: 100% !important;
     object-fit: contain !important;
-    padding: 12px;
-    filter: drop-shadow(0 6px 15px rgba(0, 0, 0, 0.6));
+    padding: 16px;
+    filter: drop-shadow(0 8px 18px rgba(44, 34, 22, 0.18));
     transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .tarjeta-libro:hover .portada-imagen {
-    transform: scale(1.05);
+    transform: scale(1.04);
 }
 
 /* Portada Fallback si no hay imagen */
 .portada-fallback {
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #1f1d2b 0%, #12111a 100%);
-    border-bottom: 2px solid var(--color-primario);
+    background: linear-gradient(135deg, #ede6d8 0%, #ded3c1 100%);
+    border-bottom: 3px solid var(--color-primario);
     box-sizing: border-box;
+    color: var(--color-texto-principal);
 }
 
 .portada-fallback-icon {
@@ -105,12 +111,15 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    color: var(--color-texto-principal);
+    font-family: var(--fuente-titulos);
 }
 
 .portada-fallback-author {
     font-size: 0.8rem;
     letter-spacing: 0.5px;
     text-transform: uppercase;
+    color: var(--color-texto-secundario);
 }
 
 

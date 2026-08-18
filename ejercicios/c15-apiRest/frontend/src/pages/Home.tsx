@@ -53,7 +53,7 @@ function PromoBanner() {
                     ¡Solo por hoy!
                 </h4>
                 <p className="mb-0 promo-text">
-                    Aprovechá un <strong className="text-white">20% de descuento</strong> en todas las novelas de ficción usando el código <strong className="promo-code">ELPRINCIPITO20</strong>.
+                    Aprovechá un <strong className="fw-bold">20% de descuento</strong> en todas las novelas de ficción usando el código <strong className="promo-code">ELPRINCIPITO20</strong>.
                 </p>
             </Alert>
         </Container>
@@ -81,7 +81,7 @@ export default function Home() {
                 
                 {loading ? (
                     <div className="text-center py-5">
-                        <Spinner animation="border" variant="warning" />
+                        <Spinner animation="border" variant="success" />
                         <p className="mt-3 text-muted">Cargando destacados...</p>
                     </div>
                 ) : error ? (
@@ -99,7 +99,7 @@ export default function Home() {
                 ) : (
                     <div className="text-center py-5 tarjeta-vidrio p-4">
                         <div className="mb-3 fs-2">⭐</div>
-                        <p className="mb-2 text-white-50">No hay libros seleccionados como destacados.</p>
+                        <p className="mb-2 text-muted">No hay libros seleccionados como destacados.</p>
                         <Link to="/admin/destacados" className="btn btn-oro-esquema mt-2">
                             Seleccionar Destacados
                         </Link>
