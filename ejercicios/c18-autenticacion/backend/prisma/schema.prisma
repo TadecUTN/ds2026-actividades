@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client"           // ← Prisma 7. NO "prisma-clien
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  
+}
+
+enum Rol {
+  CLIENTE
+  ADMIN
+}
+model Usuario {
+  id            Int           @id @default(autoincrement())
+  email         String        @unique
+  passwordHash  String
+  nombre        String
+  rol           Rol           @default(CLIENTE)
+  creadoEn      DateTime      @default(now())
+}
+
+model Libro {
+  id           Int      @id @default(autoincrement())
+  titulo       String        
+  categorias   Categoria[]
+  precio       Int
+  imagen       String
+  disponible   Boolean  @default(true)
+  autorID      Int           //la FK (crea columna)  
+  autor        Autor    @relation(fields: [autorID], references: [id])
+}
+
+model Autor {
+  id           Int      @id @default(autoincrement())
+  nombre       String   @unique
+  nacionalidad String
+  libros       Libro[]       //lado "muchos": no crea columna
+}
+
+model Categoria {
+  id           Int      @id @default(autoincrement())
+  nombre       String   @unique
+  libros       Libro[]
+}

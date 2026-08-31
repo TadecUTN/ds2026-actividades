@@ -1,0 +1,86 @@
+.contacto-subtitle {
+    color: var(--color-texto-secundario);
+}
+
+.contacto-form-card {
+    background: #ffffff !important;
+    border: 1px solid var(--color-borde);
+}
+
+.contacto-form-title {
+    font-size: 1.5rem !important;
+    color: var(--color-texto-principal) !important;
+    font-family: var(--fuente-titulos);
+}
+
+.contacto-enviado-icon {
+    font-size: 3rem;
+    color: var(--color-primario);
+}
+
+.contacto-enviado-text {
+    color: var(--color-texto-secundario);
+}
+
+.contacto-info-card {
+    background: #ffffff !important;
+    border: 1px solid var(--color-borde);
+}
+
+.contacto-info-title {
+    font-size: 1.4rem !important;
+    color: var(--color-primario) !important;
+    font-family: var(--fuente-titulos) !important;
+}
+
+.contacto-info-item-text {
+    color: var(--color-texto-principal);
+    font-size: 0.95rem;
+}
+
+.contacto-mapa-container {
+    min-height: 220px;
+    background: #f4efe4 !important;
+    border: 1px solid var(--color-borde);
+}
+
+.contacto-mapa-inner {
+    background: #eae3d2;
+    border: 1px solid var(--color-borde);
+    overflow: hidden;
+}
+
+.contacto-mapa-grid {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: radial-gradient(rgba(27, 67, 50, 0.25) 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.5;
+}
+
+.contacto-mapa-pin-outer {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(27, 67, 50, 0.15);
+    border: 2px solid var(--color-primario);
+    border-radius: 50%;
+    cursor: default;
+}
+
+.contacto-mapa-pin-inner {
+    width: 10px;
+    height: 10px;
+    background-color: var(--color-primario);
+    border-radius: 50%;
+}
+
+.contacto-mapa-label {
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid var(--color-borde);
+    font-size: 0.75rem;
+    color: var(--color-primario);
+    font-weight: 600;
+    bottom: 10px;
+    right: 10px;
+}
