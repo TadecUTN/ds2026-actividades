@@ -27,9 +27,7 @@ export async function create(datos: Omit<Libro, "id">): Promise<LibroConAutor> {
   });
 }
 
-export async function update(id: number, datos: Omit<Libro, "id">): Promise<LibroConAutor | null> {
-  const existe = await prisma.libro.findUnique({ where: { id } });
-  if (!existe) return null;
+export async function update(id: number, datos: Omit<Libro, "id">): Promise<LibroConAutor> {
   return prisma.libro.update({ 
     where: { id }, 
     data: datos,
@@ -37,10 +35,6 @@ export async function update(id: number, datos: Omit<Libro, "id">): Promise<Libr
   });
 }
 
-export async function remove(id: number): Promise<boolean> {
-  const existe = await prisma.libro.findUnique({ where: { id } });
-  if (!existe) return false;                     
-  await prisma.libro.delete({ where: { id } });  
-  return true;
-
+export async function remove(id: number): Promise<void> {
+  await prisma.libro.delete({ where: { id } });
 }

@@ -25,7 +25,7 @@ export const errorHandler = (
   }
   if (typeof err === "object" && err !== null && ("type" in err && (err as { type?: unknown }).type === "entity.too.large" || "status" in err && (err as { status?: unknown }).status === 413)) {
     return res.status(413).json({
-      error: "El cuerpo de la petición supera el límite permitido (10kb)"
+      error: "El cuerpo de la petición supera el límite permitido"
     });
   }
   console.error(err);

@@ -24,12 +24,10 @@ export async function create(req: Request, res: Response) {
 
 export async function update(req: Request, res: Response) {
   const actualizado = await libroService.update(Number(req.params.id), req.body);
-  if (!actualizado) return res.status(404).json({ error: "Libro no encontrado" });
   return res.json(actualizado);
 }
 
 export async function remove(req: Request, res: Response) {
-  const borrado = await libroService.remove(Number(req.params.id));
-  if (!borrado) return res.status(404).json({ error: "Libro no encontrado" });
+  await libroService.remove(Number(req.params.id));
   return res.status(204).send(); // 204 = sin body. No lleva .json()
 }

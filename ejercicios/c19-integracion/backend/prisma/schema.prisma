@@ -30,6 +30,9 @@ model Libro {
   disponible   Boolean  @default(true)
   autorId      Int      @map("autorID") //la FK (crea columna)  
   autor        Autor    @relation(fields: [autorId], references: [id])
+
+  @@index([disponible])
+  @@index([autorId])
 }
 
 model Autor {

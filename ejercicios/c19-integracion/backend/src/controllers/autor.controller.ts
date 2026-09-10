@@ -23,7 +23,6 @@ export async function update(req: Request, res: Response) {
 }
 
 export async function remove(req: Request, res: Response) {
-    const borrado = await autoresService.remove(Number(req.params.id));
-    if (!borrado) return res.status(404).json({ error: "Autor no encontrado" });
+    await autoresService.remove(Number(req.params.id));
     return res.status(204).send();
 }

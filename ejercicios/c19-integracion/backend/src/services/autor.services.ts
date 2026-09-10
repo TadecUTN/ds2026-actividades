@@ -26,9 +26,6 @@ export async function update(id: number, datos: Partial<Omit<Autor, "id">>): Pro
   });
 }
 
-export async function remove(id: number): Promise<boolean> {
-  const existe = await prisma.autor.findUnique({ where: { id } });
-  if (!existe) return false;
+export async function remove(id: number): Promise<void> {
   await prisma.autor.delete({ where: { id } });
-  return true;
 }
