@@ -7,13 +7,16 @@ export const registroSchema = z.object({
   email,
   password:   z.string()
               .min(8, "La contraseña necesita al menos 8 caracteres")
+              .max(72, "La contraseña no puede superar los 72 caracteres")
               .regex(/[A-Z]/, "La contraseña debe tener al menos una mayuscula")
               .regex(/[0-9]/, "La contraseña debe tener al menos un numero"),
 });
 
 export const loginSchema = z.object({
   email,
-  password:   z.string().min(1, "La contraseña es obligatoria"), // <-- No es necesario validad fortaleza
+  password:   z.string()
+              .min(1, "La contraseña es obligatoria")
+              .max(72, "La contraseña no puede superar los 72 caracteres"), // <-- No es necesario validad fortaleza
 });
 
 export type Registro = z.infer<typeof registroSchema>;

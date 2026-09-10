@@ -23,6 +23,11 @@ export const errorHandler = (
       error: "Hay registros relacionados"
     });
   }
+  if (typeof err === "object" && err !== null && ("type" in err && (err as { type?: unknown }).type === "entity.too.large" || "status" in err && (err as { status?: unknown }).status === 413)) {
+    return res.status(413).json({
+      error: "El cuerpo de la petición supera el límite permitido (10kb)"
+    });
+  }
   console.error(err);
   return res.status(500).json({
     error: "Error interno del servidor"

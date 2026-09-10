@@ -10,7 +10,7 @@ export function authenticate(req: Request, res: Response, next: NextFunction) {
     return res.status(401).json({ error: "Falta el token" });
   }
   try {
-    const payload = jwt.verify(header.slice(7), JWT_SECRET) as PayloadToken;
+    const payload = jwt.verify(header.slice(7), JWT_SECRET, { algorithms: ["HS256"] }) as PayloadToken;
     req.usuario = { id: payload.id, rol: payload.rol };
     next();
   } catch (error) {
