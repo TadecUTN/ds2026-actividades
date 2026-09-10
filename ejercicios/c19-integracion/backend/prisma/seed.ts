@@ -111,50 +111,53 @@ const libros = [
 
 const usuarios = [
   {
-        nombre: "Admin Principal",
-        email: "admin@libreria.com",
-        password: "admin123",
-        rol: "ADMIN",
-      },
-      {
-        nombre: "Juan Pérez",
-        email: "juan@libreria.com",
-        password: "cliente123",
-        rol: "CLIENTE",
-      },
-      {
-        nombre: "María Gómez",
-        email: "maria@libreria.com",
-        password: "cliente456",
-        rol: "CLIENTE",
-      },
+    nombre: "Admin",
+    email: "admin@libreria.test",
+    password: "Admin1234",
+    rol: "ADMIN",
+  },
+  {
+    nombre: "Cliente",
+    email: "cliente@libreria.test",
+    password: "Cliente1234",
+    rol: "CLIENTE",
+  },
 ] as const;
 
 async function main() {
   for (const { password, ...datos } of usuarios) {
     await prisma.usuario.upsert({
       where: { email: datos.email },
-      update: {},
+      update: {
+        nombre: datos.nombre,
+        rol: datos.rol,
+        passwordHash: await bcrypt.hash(password, 10),
+      },
       create: { ...datos, passwordHash: await bcrypt.hash(password, 10) },
     });
   }
 
-  await prisma.categoria.createMany({ data: categorias });
-  await prisma.autor.createMany({ data: autores });
+  await prisma.categoria.createMany({ data: categorias, skipDuplicates: true });
+  await prisma.autor.createMany({ data: autores, skipDuplicates: true });
 
-  for (const { autor, categorias, ...datos } of libros) {
-    await prisma.libro.create({
-      data: {
-        ...datos,
-        autor: {
-          connect: { nombre: autor },
+  const librosExistentes = await prisma.libro.count();
+  if (librosExistentes === 0) {
+    for (const { autor, categorias, ...datos } of libros) {
+      await prisma.libro.create({
+        data: {
+          ...datos,
+          autor: {
+            connect: { nombre: autor },
+          },
+          categorias: {
+            connect: categorias.map((nombre) => ({ nombre })),
+          },
         },
-        categorias: {
-          connect: categorias.map((nombre) => ({ nombre })),
-        },
-      },
-    });
+      });
+    }
   }
+
+  await prisma.$disconnect();
 }
 
 main();

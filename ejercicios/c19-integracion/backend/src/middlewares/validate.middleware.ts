@@ -12,5 +12,6 @@ export const validateParams = (schema: ZodType) =>
   (req: Request, res: Response, next: NextFunction) => {
     const resultado = schema.safeParse(req.params);
     if (!resultado.success) return next(resultado.error);
+    req.params = resultado.data as any;
     next();
-  }
+  };

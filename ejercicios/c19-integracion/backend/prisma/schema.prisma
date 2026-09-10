@@ -28,8 +28,8 @@ model Libro {
   precio       Int
   imagen       String
   disponible   Boolean  @default(true)
-  autorID      Int           //la FK (crea columna)  
-  autor        Autor    @relation(fields: [autorID], references: [id])
+  autorId      Int      @map("autorID") //la FK (crea columna)  
+  autor        Autor    @relation(fields: [autorId], references: [id])
 }
 
 model Autor {

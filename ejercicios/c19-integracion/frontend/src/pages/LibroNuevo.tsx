@@ -71,7 +71,7 @@ function LibroNuevo() {
                 precio: Number(form.precio),
                 imagen: IMG_PLACEHOLDER,
                 disponible: form.disponible,
-                autorID: 1,
+                autorId: 1,
             });
             navigate('/catalogo');
         } catch (error: unknown) {

@@ -57,7 +57,6 @@ Content-Type: application/json
 ### El token queda guardado acá
 @token = {{login.response.body.token}}
 
-### NO ANDA
 ### 6b · Login ADMIN (del seed) → 200 con token
 # @name loginAdmin
 POST {{baseUrl}}/api/auth/login
@@ -90,7 +89,6 @@ Authorization: Bearer {{token}}
 
 { "titulo": "Rayuela", "precio": 7000, "imagen": "https://…", "autorId": 1 }
 
-### NO ANDA
 ### 11 · Crear libro con token de ADMIN → 201
 POST {{baseUrl}}/api/libros
 Content-Type: application/json
@@ -98,7 +96,6 @@ Authorization: Bearer {{tokenAdmin}}
 
 { "titulo": "Rayuela", "precio": 7000, "imagen": "https://…", "autorId": 1 }
 
-### TIRA 401
 ### 12 · ADMIN con body inválido → 400, no 403 (validate corre después de authorize)
 POST {{baseUrl}}/api/libros
 Content-Type: application/json
@@ -129,7 +126,6 @@ Authorization: {{token}}
 
 ### ─────────────── ERRORES DE C17 (que ahora sí salen bien) ───────────────
 
-### NO ANDA
 ### 409 · Autor duplicado — en C17 esto devolvía HTML con un 500
 POST {{baseUrl}}/api/autores
 Content-Type: application/json
@@ -140,7 +136,6 @@ Authorization: Bearer {{tokenAdmin}}
 ### 400 · Id inválido
 GET {{baseUrl}}/api/libros/abc
 
-### TIRA 401 
 ### 404 · Actualizar algo que no existe
 PUT {{baseUrl}}/api/libros/9999
 Content-Type: application/json

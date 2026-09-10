@@ -5,7 +5,7 @@ export const libroCreateSchema = z.object({
   precio:     z.number().positive("EL precio debe ser mayor a 0"),
   imagen:     z.string().min(1, "La imagen es obligatoria"),
   disponible: z.boolean().optional(),   //el default lo pone automaticamente prisma
-  autorID:    z.number().int().positive("El autor es obligatorio"),
+  autorId:    z.number().int().positive("El autor es obligatorio"),
 });
 
 export const libroUpdateSchema = libroCreateSchema.partial();

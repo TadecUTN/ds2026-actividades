@@ -8,6 +8,6 @@ export type Libro = {
     precio: number;
     imagen: string;
     disponible: boolean;
-    autorID?: number;
+    autorId?: number;
     categorias?: Categoria[];
 };
