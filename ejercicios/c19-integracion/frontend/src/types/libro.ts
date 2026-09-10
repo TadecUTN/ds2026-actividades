@@ -11,3 +11,13 @@ export type Libro = {
     autorId?: number;
     categorias?: Categoria[];
 };
+
+export type NuevoLibroDTO = {
+    titulo: string;
+    precio: number;
+    imagen?: string;
+    disponible?: boolean;
+    autorId?: number;
+    categorias?: string[];
+    autor?: { id?: number; nombre: string };
+};

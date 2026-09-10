@@ -1,5 +1,5 @@
 import { apiFetch } from './api';
-import type { Libro } from '../types/libro';
+import type { Libro, NuevoLibroDTO } from '../types/libro';
 
 const DESTACADOS_STORAGE_KEY = 'lectura_inteligente_destacados';
 
@@ -15,7 +15,7 @@ export const libroService = {
     },
 
     // Agrega un libro nuevo a la API
-    async addLibro(nuevo: Omit<Libro, 'id'> | Partial<Libro>): Promise<Libro> {
+    async addLibro(nuevo: NuevoLibroDTO | (Omit<Libro, 'id'> & { categorias?: string[]; imagen?: string }) | Partial<Libro>): Promise<Libro> {
         return apiFetch<Libro>('/libros', {
             method: 'POST',
             body: JSON.stringify(nuevo),
