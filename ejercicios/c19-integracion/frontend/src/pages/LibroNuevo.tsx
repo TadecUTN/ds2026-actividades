@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Form, Button, Container, Alert } from 'react-bootstrap';
+import { Form, Button, Container, Alert, Spinner } from 'react-bootstrap';
 import { libroSchema } from '../schemas/libroSchema';
 import { libroService } from '../services/libroService';
 import '../assets/libro-nuevo/LibroNuevo.css';
@@ -18,7 +18,8 @@ function LibroNuevo() {
     });
     const [errores, setErrores] = useState<Record<string, string>>({});
     const [errorServidor, setErrorServidor] = useState<string | null>(null);
-    const [cargando, setCargando] = useState(false);
+    const [mensajeExito, setMensajeExito] = useState<string | null>(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         const target = e.target;
@@ -54,12 +55,13 @@ function LibroNuevo() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setErrorServidor(null);
+        setMensajeExito(null);
         const err = validar();
         setErrores(err);
         if (Object.keys(err).length > 0) {
             return;
         }
-        setCargando(true);
+        setIsSubmitting(true);
         try {
             await libroService.addLibro({
                 titulo: form.titulo.toUpperCase(),
@@ -69,12 +71,16 @@ function LibroNuevo() {
                 disponible: form.disponible,
                 autorId: 1,
             });
-            navigate('/catalogo');
+            const tituloConfirmado = form.titulo.toUpperCase();
+            setMensajeExito(`¡El libro "${tituloConfirmado}" fue agregado con éxito al catálogo real!`);
+            setTimeout(() => {
+                navigate('/catalogo', { state: { libroAgregado: tituloConfirmado } });
+            }, 1200);
         } catch (error: unknown) {
             const mensaje = error instanceof Error ? error.message : 'Error al registrar el libro';
             setErrorServidor(mensaje);
         } finally {
-            setCargando(false);
+            setIsSubmitting(false);
         }
     };
 
@@ -82,6 +88,12 @@ function LibroNuevo() {
         <Container className="my-5 d-flex justify-content-center animacion-entrada">
             <div className="tarjeta-vidrio p-5 w-100 nuevo-libro-card">
                 <h2 className="text-center mb-4 pb-3 nuevo-libro-titulo">Agregar Nuevo Libro</h2>
+
+                {mensajeExito && (
+                    <Alert variant="success" className="mb-4 text-center animacion-entrada">
+                        {mensajeExito}
+                    </Alert>
+                )}
                 
                 {errorServidor && (
                     <Alert variant="danger" className="mb-4 text-center">
@@ -172,8 +184,26 @@ function LibroNuevo() {
                         />
                     </Form.Group>
 
-                    <Button type="submit" className="btn-oro-primario w-100 py-3 mt-2" disabled={cargando}>
-                        {cargando ? 'Registrando...' : 'Registrar Libro'}
+                    <Button
+                        type="submit"
+                        className="btn-oro-primario w-100 py-3 mt-2"
+                        disabled={isSubmitting || !!mensajeExito}
+                    >
+                        {isSubmitting ? (
+                            <>
+                                <Spinner
+                                    as="span"
+                                    animation="border"
+                                    size="sm"
+                                    role="status"
+                                    aria-hidden="true"
+                                    className="me-2"
+                                />
+                                Registrando...
+                            </>
+                        ) : (
+                            'Registrar Libro'
+                        )}
                     </Button>
                 </Form>
             </div>

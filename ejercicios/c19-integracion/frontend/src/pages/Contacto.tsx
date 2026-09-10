@@ -1,14 +1,18 @@
 import { useState } from 'react';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, Spinner } from 'react-bootstrap';
 import '../assets/contacto/Contacto.css';
 
 function Contacto() {
     const [enviado, setEnviado] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [datos, setDatos] = useState({ nombre: '', email: '', mensaje: '' });
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (datos.nombre && datos.email && datos.mensaje) {
+            setIsSubmitting(true);
+            await new Promise((resolve) => setTimeout(resolve, 800));
+            setIsSubmitting(false);
             setEnviado(true);
             setTimeout(() => {
                 setEnviado(false);
@@ -77,8 +81,26 @@ function Contacto() {
                                     />
                                 </Form.Group>
 
-                                <Button type="submit" className="btn-oro-primario w-100 py-3 mt-2">
-                                    Enviar Mensaje
+                                <Button
+                                    type="submit"
+                                    className="btn-oro-primario w-100 py-3 mt-2"
+                                    disabled={isSubmitting}
+                                >
+                                    {isSubmitting ? (
+                                        <>
+                                            <Spinner
+                                                as="span"
+                                                animation="border"
+                                                size="sm"
+                                                role="status"
+                                                aria-hidden="true"
+                                                className="me-2"
+                                            />
+                                            Enviando...
+                                        </>
+                                    ) : (
+                                        'Enviar Mensaje'
+                                    )}
                                 </Button>
                             </Form>
                         )}

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Form, Button, Container, Alert, Spinner } from 'react-bootstrap';
 import { loginSchema } from '../schemas/loginSchema';
 import { apiFetch } from '../services/api';
-import { guardarToken } from '../services/sesion';
+import { useAuth } from '../hooks/useAuth';
 import '../assets/login/Login.css';
 
 interface LoginRespuesta {
@@ -18,13 +18,14 @@ interface LoginRespuesta {
 
 function Login() {
     const navigate = useNavigate();
+    const { login } = useAuth();
     const [form, setForm] = useState({
         email: '',
         password: '',
     });
     const [errores, setErrores] = useState<Record<string, string>>({});
     const [errorApi, setErrorApi] = useState<string | null>(null);
-    const [cargando, setCargando] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -58,14 +59,14 @@ function Login() {
             return;
         }
 
-        setCargando(true);
+        setIsSubmitting(true);
         try {
             const respuesta = await apiFetch<LoginRespuesta>('/auth/login', {
                 method: 'POST',
                 body: JSON.stringify(form),
             });
 
-            guardarToken(respuesta.token);
+            login(respuesta.token, respuesta.usuario);
             navigate('/catalogo');
         } catch (error: unknown) {
             const mensaje = error instanceof Error ? error.message : 'Error al iniciar sesión';
@@ -75,7 +76,7 @@ function Login() {
                 setErrorApi(mensaje);
             }
         } finally {
-            setCargando(false);
+            setIsSubmitting(false);
         }
     };
 
@@ -126,9 +127,9 @@ function Login() {
                     <Button
                         type="submit"
                         className="btn-oro-primario w-100 py-3 mt-2"
-                        disabled={cargando}
+                        disabled={isSubmitting}
                     >
-                        {cargando ? (
+                        {isSubmitting ? (
                             <>
                                 <Spinner
                                     as="span"

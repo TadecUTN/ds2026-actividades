@@ -68,3 +68,50 @@
 .nav-link-custom:hover::after, .nav-link-custom.active::after {
     transform: scaleX(1);
 }
+
+.navbar-auth-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.navbar-user-badge {
+    font-family: var(--fuente-cuerpo);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-texto-primario);
+    background: rgba(44, 34, 22, 0.05);
+    border: 1px solid var(--color-borde);
+    padding: 4px 10px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.navbar-role-pill {
+    background: var(--color-primario);
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 2px 6px;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+.navbar-btn-logout {
+    border-color: rgba(180, 40, 40, 0.3) !important;
+    color: #b02a37 !important;
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    padding: 4px 12px !important;
+    transition: all 0.2s ease !important;
+}
+
+.navbar-btn-logout:hover {
+    background: #b02a37 !important;
+    color: #ffffff !important;
+    border-color: #b02a37 !important;
+}

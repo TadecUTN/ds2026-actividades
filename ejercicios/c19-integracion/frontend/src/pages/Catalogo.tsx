@@ -1,10 +1,12 @@
 import { useState, useMemo } from 'react';
+import { useLocation } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Alert from 'react-bootstrap/Alert';
+import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 import LibroCard from '../components/LibroCard';
 import { useFetch } from '../hooks/useFetch';
@@ -13,11 +15,24 @@ import type { Libro } from '../types/libro';
 import '../assets/catalogo/Catalogo.css';
 
 function Catalogo() {
+    const location = useLocation();
     const { data: libros, loading, error } = useFetch<Libro[]>(libroService.getLibros, []);
     const [busqueda, setBusqueda] = useState('');
     const [soloDisponibles, setSoloDisponibles] = useState(false);
     const [ordenarPor, setOrdenarPor] = useState('titulo-asc');
     const [categoria, setCategoria] = useState('Todas');
+    const [mensajeAlerta, setMensajeAlerta] = useState<string | null>(
+        location.state?.libroAgregado
+            ? `El libro "${location.state.libroAgregado}" fue agregado con éxito al catálogo.`
+            : null
+    );
+
+    const handleLimpiarFiltros = () => {
+        setBusqueda('');
+        setCategoria('Todas');
+        setSoloDisponibles(false);
+        setOrdenarPor('titulo-asc');
+    };
 
     // Filtrar y ordenar los libros
     const librosFiltrados = useMemo(() => {
@@ -82,6 +97,17 @@ function Catalogo() {
                 <h1 className="display-4 fw-bold">Nuestro Catálogo</h1>
                 <p className="catalogo-subtitle">Explorá nuestras colecciones y encontrá tu próxima lectura</p>
             </div>
+
+            {mensajeAlerta && (
+                <Alert
+                    variant="success"
+                    dismissible
+                    onClose={() => setMensajeAlerta(null)}
+                    className="mb-4 text-center animacion-entrada"
+                >
+                    {mensajeAlerta}
+                </Alert>
+            )}
 
             {/* Controles de Filtros y Búsqueda */}
             <div className="tarjeta-vidrio p-4 mb-5 catalogo-filter-card">
@@ -167,6 +193,13 @@ function Catalogo() {
                     <p className="mx-auto catalogo-no-results-text">
                         Ajustá los filtros de búsqueda o disponibilidad para ver otros títulos de nuestra colección.
                     </p>
+                    <Button
+                        variant="outline-secondary"
+                        className="btn-oro-esquema mt-3"
+                        onClick={handleLimpiarFiltros}
+                    >
+                        Limpiar filtros
+                    </Button>
                 </div>
             )}
         </Container>

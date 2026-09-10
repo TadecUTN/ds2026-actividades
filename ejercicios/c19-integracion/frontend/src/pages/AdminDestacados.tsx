@@ -17,6 +17,7 @@ export default function AdminDestacados() {
     // Carga los destacados guardados
     useEffect(() => {
         if (destacadosIds) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setSelectedIds(destacadosIds);
         }
     }, [destacadosIds]);

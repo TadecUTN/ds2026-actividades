@@ -7,6 +7,7 @@ import Contacto from './pages/Contacto';
 import LibroNuevo from './pages/LibroNuevo';
 import AdminDestacados from './pages/AdminDestacados';
 import Login from './pages/Login';
+import NotFound from './pages/NotFound';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 
@@ -28,6 +29,7 @@ export default function App() {
         <Route path='/libros/:id' element={<LibroDetalle />} />
         <Route path='/admin/destacados' element={<AdminDestacados />} />
         <Route path='/login' element={<Login />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </Layout>
   );
