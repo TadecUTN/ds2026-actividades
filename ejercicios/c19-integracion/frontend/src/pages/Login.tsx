@@ -69,7 +69,11 @@ function Login() {
             navigate('/catalogo');
         } catch (error: unknown) {
             const mensaje = error instanceof Error ? error.message : 'Error al iniciar sesión';
-            setErrorApi(mensaje);
+            if (mensaje.toLowerCase().includes('intentos') || mensaje.toLowerCase().includes('ip') || mensaje.includes('429')) {
+                setErrorApi('Espere un momento para volver a intentar');
+            } else {
+                setErrorApi(mensaje);
+            }
         } finally {
             setCargando(false);
         }

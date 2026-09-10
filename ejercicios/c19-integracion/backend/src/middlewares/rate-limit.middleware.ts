@@ -1,11 +1,12 @@
 import rateLimit from "express-rate-limit";
+import { AUTH_RATE_LIMIT_WINDOW_MS, AUTH_RATE_LIMIT_MAX } from "../config/env";
 
 export const authLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutos
-  limit: 10, // máximo 10 intentos por IP en esa ventana
+  windowMs: AUTH_RATE_LIMIT_WINDOW_MS,
+  limit: AUTH_RATE_LIMIT_MAX,
   standardHeaders: "draft-8",
   legacyHeaders: false,
   message: {
-    error: "Demasiados intentos desde esta IP, por favor intente nuevamente en 15 minutos",
+    error: "Espere un momento para volver a intentar",
   },
 });

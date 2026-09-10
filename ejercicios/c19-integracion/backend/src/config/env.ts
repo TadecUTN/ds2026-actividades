@@ -9,3 +9,5 @@ function obligatorio (nombre: string): string {
 export const JWT_SECRET = obligatorio ("JWT_SECRET" );
 export const JWT_EXPIRES_IN : SignOptions ["expiresIn" ] = "2h"; // constante, NO va al .env
 export const SALT_ROUNDS = 10;
+export const AUTH_RATE_LIMIT_WINDOW_MS = Number(process.env.AUTH_RATE_LIMIT_WINDOW_MS) || 1 * 60 * 1000;
+export const AUTH_RATE_LIMIT_MAX = Number(process.env.AUTH_RATE_LIMIT_MAX) || 10;
