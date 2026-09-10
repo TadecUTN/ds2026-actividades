@@ -22,7 +22,7 @@ function Catalogo() {
     // Filtrar y ordenar los libros
     const librosFiltrados = useMemo(() => {
         const list = libros || [];
-        let resultado = list.filter((libro) => {
+        const resultado = list.filter((libro) => {
             const coincideBusqueda = 
                 libro.titulo.toLowerCase().includes(busqueda.toLowerCase()) ||
                 libro.autor.nombre.toLowerCase().includes(busqueda.toLowerCase());

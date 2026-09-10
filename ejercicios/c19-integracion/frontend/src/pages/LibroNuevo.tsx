@@ -20,21 +20,17 @@ function LibroNuevo() {
     const [errorServidor, setErrorServidor] = useState<string | null>(null);
     const [cargando, setCargando] = useState(false);
 
-    const handleChange1 = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value, type, checked } = e.target;
-        setForm((prev) => ({
-            ...prev,
-            [name]: type === 'checkbox' ? checked : value
-        } as typeof prev));
-    };
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+        const target = e.target;
+        const valor = target instanceof HTMLInputElement && target.type === 'checkbox'
+            ? target.checked
+            : target.value;
 
-    const handleChange2 = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        const {name, value} = e.target;
         setForm((prev) => ({
             ...prev,
-            [name]: value
-        } as typeof prev));
-    }
+            [target.name]: valor
+        }));
+    };
 
     const validar = () => {
         const resultado = libroSchema.safeParse({
@@ -99,7 +95,7 @@ function LibroNuevo() {
                         <Form.Control
                             name="titulo"
                             value={form.titulo}
-                            onChange={handleChange1}
+                            onChange={handleChange}
                             isInvalid={!!errores.titulo}
                             className="form-control-premium"
                             placeholder="Ej. El Alquimista"
@@ -114,7 +110,7 @@ function LibroNuevo() {
                         <Form.Control
                             name="autor"
                             value={form.autor}
-                            onChange={handleChange1}
+                            onChange={handleChange}
                             isInvalid={!!errores.autor}
                             className="form-control-premium"
                             placeholder="Ej. Paulo Coelho"
@@ -129,7 +125,7 @@ function LibroNuevo() {
                         <Form.Select
                             name="categoria"
                             value={form.categoria}
-                            onChange={handleChange2}
+                            onChange={handleChange}
                             isInvalid={!!errores.categoria}
                             className="form-control-premium"
                         >
@@ -144,7 +140,7 @@ function LibroNuevo() {
                             <option value="Drama">Drama</option>
                         </Form.Select>
                         <Form.Control.Feedback type="invalid" className="nuevo-libro-feedback-error">
-                            {errores.autor}
+                            {errores.categoria}
                         </Form.Control.Feedback>
                     </Form.Group>
  
@@ -154,7 +150,7 @@ function LibroNuevo() {
                             type="number"
                             name="precio"
                             value={form.precio}
-                            onChange={handleChange1}
+                            onChange={handleChange}
                             isInvalid={!!errores.precio}
                             className="form-control-premium"
                             placeholder="Ej. 4500"
@@ -171,11 +167,11 @@ function LibroNuevo() {
                             label="Disponible para Venta"
                             name="disponible"
                             checked={form.disponible}
-                            onChange={handleChange1}
+                            onChange={handleChange}
                             className="nuevo-libro-checkbox"
                         />
                     </Form.Group>
- 
+
                     <Button type="submit" className="btn-oro-primario w-100 py-3 mt-2" disabled={cargando}>
                         {cargando ? 'Registrando...' : 'Registrar Libro'}
                     </Button>

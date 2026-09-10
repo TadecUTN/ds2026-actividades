@@ -8,3 +8,4 @@ src/generated/
 .vscode/
 .idea/
 .DS_Store
+.scratch

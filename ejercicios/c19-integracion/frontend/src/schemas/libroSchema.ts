@@ -7,6 +7,8 @@ export const libroSchema = z.object({
     autor: z.string().trim()
         .min(1, 'El libro debe tener autor')
         .max(40, 'El nombre del autor es demasiado largo'),
+    categoria: z.string().trim()
+        .min(1, 'Debes seleccionar una categoría'),
     precio: z.number()
         .gte(1, 'El producto debe tener un precio positivo'),
     disponible: z.boolean(),
