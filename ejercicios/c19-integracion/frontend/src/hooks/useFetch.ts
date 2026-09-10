@@ -1,7 +1,11 @@
 import { useState, useEffect, useCallback } from 'react';
+import { apiFetch } from '../services/api';
 
-// Busca y trae información desde un servicio y maneja la espera y los errores
-export function useFetch<T>(fetchFn: () => Promise<T>, dependencies: any[] = []) {
+// Busca y trae información desde un endpoint o función de servicio y maneja la espera y los errores
+export function useFetch<T>(
+    endpointOrFn: string | (() => Promise<T>),
+    dependencies: any[] = []
+) {
     const [data, setData] = useState<T | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
@@ -10,7 +14,9 @@ export function useFetch<T>(fetchFn: () => Promise<T>, dependencies: any[] = [])
         setLoading(true);
         setError(null);
         try {
-            const result = await fetchFn();
+            const result = typeof endpointOrFn === 'function'
+                ? await endpointOrFn()
+                : await apiFetch<T>(endpointOrFn);
             setData(result);
         } catch (err: any) {
             setError(err.message || 'Error al obtener los datos');
@@ -25,3 +31,4 @@ export function useFetch<T>(fetchFn: () => Promise<T>, dependencies: any[] = [])
 
     return { data, loading, error, refetch: execute, setData };
 }
+

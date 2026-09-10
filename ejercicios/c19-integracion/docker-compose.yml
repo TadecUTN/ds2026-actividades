@@ -5,6 +5,7 @@ services:
       - "5173:5173"
     volumes:
       - ./frontend/src:/app/src
+      - ./frontend/.env:/app/.env
     depends_on:
       - api
 

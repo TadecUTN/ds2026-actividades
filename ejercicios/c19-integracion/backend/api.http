@@ -147,3 +147,6 @@ Content-Type: application/json
 Authorization: Bearer {{tokenAdmin}}
 
 { "precio": 5000 }
+
+### 404 · Ruta inexistente (responde JSON)
+GET {{baseUrl}}/api/ruta-inexistente

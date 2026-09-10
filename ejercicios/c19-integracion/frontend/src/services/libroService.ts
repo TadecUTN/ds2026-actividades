@@ -1,37 +1,25 @@
+import { apiFetch } from './api';
 import type { Libro } from '../types/libro';
 
-const CUSTOM_LIBROS_STORAGE_KEY = 'lectura_inteligente_custom_libros';
 const DESTACADOS_STORAGE_KEY = 'lectura_inteligente_destacados';
 
 export const libroService = {
-    // Obtiene todos los libros guardados
+    // Obtiene todos los libros guardados desde la API
     async getLibros(): Promise<Libro[]> {
-        await new Promise((resolve) => setTimeout(resolve, 150));
-
-        const customCached = localStorage.getItem(CUSTOM_LIBROS_STORAGE_KEY);
-        const customLibros: Libro[] = customCached ? JSON.parse(customCached) : [];
-
-        return customLibros;
+        return apiFetch<Libro[]>('/libros');
     },
 
-    // Busca un libro por su identificador
-    async getLibroById(id: number): Promise<Libro | undefined> {
-        const libros = await this.getLibros();
-        return libros.find((l) => l.id === id);
+    // Busca un libro por su identificador desde la API
+    async getLibroById(id: number): Promise<Libro> {
+        return apiFetch<Libro>(`/libros/${id}`);
     },
 
-    // Agrega un libro nuevo a la lista
-    async addLibro(nuevo: Libro): Promise<Libro> {
-        const customCached = localStorage.getItem(CUSTOM_LIBROS_STORAGE_KEY);
-        const customLibros: Libro[] = customCached ? JSON.parse(customCached) : [];
-        const updated = [...customLibros, nuevo];
-        localStorage.setItem(CUSTOM_LIBROS_STORAGE_KEY, JSON.stringify(updated));
-        return nuevo;
-    },
-
-    // Guarda la lista completa de libros
-    async saveLibros(libros: Libro[]): Promise<void> {
-        localStorage.setItem(CUSTOM_LIBROS_STORAGE_KEY, JSON.stringify(libros));
+    // Agrega un libro nuevo a la API
+    async addLibro(nuevo: Omit<Libro, 'id'> | Partial<Libro>): Promise<Libro> {
+        return apiFetch<Libro>('/libros', {
+            method: 'POST',
+            body: JSON.stringify(nuevo),
+        });
     },
 
     // Obtiene los identificadores de los libros destacados
@@ -51,3 +39,4 @@ export const libroService = {
         localStorage.setItem(DESTACADOS_STORAGE_KEY, JSON.stringify(ids));
     }
 };
+
