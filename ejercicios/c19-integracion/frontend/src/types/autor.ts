@@ -1,5 +1,5 @@
 export type Autor = {
-    id?: number;
+    id: number;
     nombre: string;
     nacionalidad?: string;
 };
