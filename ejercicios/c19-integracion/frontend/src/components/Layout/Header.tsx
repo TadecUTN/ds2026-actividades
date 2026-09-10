@@ -26,6 +26,7 @@ function MyNavbar() {
                         <NavLink to='/libros/nuevo' className={({ isActive }) => `nav-link nav-link-custom ${isActive ? 'active' : ''}`}>Nuevo Libro</NavLink>
                         <NavLink to='/admin/destacados' className={({ isActive }) => `nav-link nav-link-custom ${isActive ? 'active' : ''}`}>Gestionar Destacados</NavLink>
                         <NavLink to='/contacto' className={({ isActive }) => `nav-link nav-link-custom ${isActive ? 'active' : ''}`}>Contacto</NavLink>
+                        <NavLink to='/login' className={({ isActive }) => `nav-link nav-link-custom ${isActive ? 'active' : ''}`}>Login</NavLink>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

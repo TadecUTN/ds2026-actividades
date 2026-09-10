@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Form, Button, Container } from 'react-bootstrap';
+import { Form, Button, Container, Alert } from 'react-bootstrap';
 import { libroSchema } from '../schemas/libroSchema';
 import { libroService } from '../services/libroService';
 import '../assets/libro-nuevo/LibroNuevo.css';
@@ -17,6 +17,8 @@ function LibroNuevo() {
         disponible: true
     });
     const [errores, setErrores] = useState<Record<string, string>>({});
+    const [errorServidor, setErrorServidor] = useState<string | null>(null);
+    const [cargando, setCargando] = useState(false);
 
     const handleChange1 = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value, type, checked } = e.target;
@@ -55,26 +57,41 @@ function LibroNuevo() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setErrorServidor(null);
         const err = validar();
         setErrores(err);
         if (Object.keys(err).length > 0) {
             return;
         }
-        await libroService.addLibro({
-            id: Date.now(),
-            titulo: form.titulo.toUpperCase(),
-            autor: { nombre: form.autor.toUpperCase() },
-            precio: Number(form.precio),
-            imagen: IMG_PLACEHOLDER,
-            disponible: form.disponible,
-        });
-        navigate('/catalogo');
+        setCargando(true);
+        try {
+            await libroService.addLibro({
+                titulo: form.titulo.toUpperCase(),
+                autor: { nombre: form.autor.toUpperCase() },
+                precio: Number(form.precio),
+                imagen: IMG_PLACEHOLDER,
+                disponible: form.disponible,
+                autorID: 1,
+            });
+            navigate('/catalogo');
+        } catch (error: unknown) {
+            const mensaje = error instanceof Error ? error.message : 'Error al registrar el libro';
+            setErrorServidor(mensaje);
+        } finally {
+            setCargando(false);
+        }
     };
 
     return (
         <Container className="my-5 d-flex justify-content-center animacion-entrada">
             <div className="tarjeta-vidrio p-5 w-100 nuevo-libro-card">
                 <h2 className="text-center mb-4 pb-3 nuevo-libro-titulo">Agregar Nuevo Libro</h2>
+                
+                {errorServidor && (
+                    <Alert variant="danger" className="mb-4 text-center">
+                        {errorServidor}
+                    </Alert>
+                )}
                 
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-4">
@@ -159,8 +176,8 @@ function LibroNuevo() {
                         />
                     </Form.Group>
  
-                    <Button type="submit" className="btn-oro-primario w-100 py-3 mt-2">
-                        Registrar Libro
+                    <Button type="submit" className="btn-oro-primario w-100 py-3 mt-2" disabled={cargando}>
+                        {cargando ? 'Registrando...' : 'Registrar Libro'}
                     </Button>
                 </Form>
             </div>
