@@ -11,6 +11,9 @@ GET {{baseUrl}}/api/libros
 ### Detalle de un libro (público)
 GET {{baseUrl}}/api/libros/1
 
+### Listar categorías (público)
+GET {{baseUrl}}/api/categorias
+
 
 ### ─────────────── REGISTRO ───────────────
 

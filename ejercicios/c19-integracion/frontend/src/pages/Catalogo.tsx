@@ -11,12 +11,18 @@ import Spinner from 'react-bootstrap/Spinner';
 import LibroCard from '../components/LibroCard';
 import { useFetch } from '../hooks/useFetch';
 import { libroService } from '../services/libroService';
+import { categoriaService } from '../services/categoriaService';
 import type { Libro } from '../types/libro';
+import type { Categoria } from '../types/categoria';
 import '../assets/catalogo/Catalogo.css';
+
+const normalizar = (texto: string) =>
+    texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 
 function Catalogo() {
     const location = useLocation();
     const { data: libros, loading, error } = useFetch<Libro[]>(libroService.getLibros, []);
+    const { data: categorias } = useFetch<Categoria[]>(categoriaService.getCategorias, []);
     const [busqueda, setBusqueda] = useState('');
     const [soloDisponibles, setSoloDisponibles] = useState(false);
     const [ordenarPor, setOrdenarPor] = useState('titulo-asc');
@@ -46,8 +52,9 @@ function Catalogo() {
 
             let coincideCategoria = true;
             if (categoria !== "Todas") {
+                const catNormalizada = normalizar(categoria);
                 coincideCategoria = !!libro.categorias?.some(
-                    (cat) => cat.nombre.toLowerCase() === categoria.toLowerCase()
+                    (cat) => normalizar(cat.nombre) === catNormalizada
                 );
             }
 
@@ -145,15 +152,12 @@ function Catalogo() {
                             onChange={(e) => setCategoria(e.target.value)}
                             className="form-control-premium form-select catalogo-select"
                         >
-                            <option value="Todas" className='catalogo-option'>Todas</option>
-                            <option value="Ficcion" className='catalogo-option'>Ficcion</option>
-                            <option value="Ciencia Ficción" className='catalogo-option'>Ciencia Ficción</option>
-                            <option value="Clásicos" className='catalogo-option'>Clásicos</option>
-                            <option value="Tecnología" className='catalogo-option'>Tecnología</option>
-                            <option value="Historia" className='catalogo-option'>Historia</option>
-                            <option value="Misterio" className='catalogo-option'>Misterio</option>
-                            <option value="Filosofía" className='catalogo-option'>Filosofía</option>
-                            <option value="Drama" className='catalogo-option'>Drama</option>
+                            <option value="Todas" className="catalogo-option">Todas</option>
+                            {categorias?.map((cat) => (
+                                <option key={cat.id} value={cat.nombre} className="catalogo-option">
+                                    {cat.nombre}
+                                </option>
+                            ))}
                         </Form.Select>
                     </Col>
 
