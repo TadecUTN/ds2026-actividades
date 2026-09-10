@@ -1,9 +1,13 @@
+import type { Autor } from './autor';
+import type { Categoria } from './categoria';
+
 export type Libro = {
     id: number;
-    title: string;
-    author: string;
-    category: string;
-    cover?: string;
-    precio?: number;
-    disponible?: boolean;
-}
+    titulo: string;
+    autor: Autor;
+    precio: number;
+    imagen: string;
+    disponible: boolean;
+    autorID?: number;
+    categorias?: Categoria[];
+};

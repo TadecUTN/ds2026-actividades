@@ -28,8 +28,8 @@ export default function AdminDestacados() {
     const filteredLibros = useMemo(() => {
         if (!libros) return [];
         return libros.filter((libro) =>
-            libro.title.toLowerCase().includes(busqueda.toLowerCase()) ||
-            libro.author.toLowerCase().includes(busqueda.toLowerCase())
+            libro.titulo.toLowerCase().includes(busqueda.toLowerCase()) ||
+            libro.autor.nombre.toLowerCase().includes(busqueda.toLowerCase())
         );
     }, [libros, busqueda]);
 
@@ -157,20 +157,20 @@ export default function AdminDestacados() {
                                 className={`book-selection-row ${isFeatured ? 'is-featured' : ''}`}
                             >
                                 <img 
-                                    src={libro.cover || 'https://placehold.co/300x400?text=Lectura+Inteligente'} 
-                                    alt={libro.title} 
+                                    src={libro.imagen} 
+                                    alt={libro.titulo} 
                                     className="book-row-cover" 
                                 />
                                 <div className="book-row-info">
                                     <div className="d-flex align-items-center">
-                                        <h5 className="book-row-title mb-0">{libro.title}</h5>
+                                        <h5 className="book-row-title mb-0">{libro.titulo}</h5>
                                         {isFeatured && (
                                             <Badge bg="warning" text="dark" className="book-row-badge ms-2">
                                                 ★ Destacado
                                             </Badge>
                                         )}
                                     </div>
-                                    <div className="book-row-author">{libro.author}</div>
+                                    <div className="book-row-author">{libro.autor.nombre}</div>
                                 </div>
                                 <div className="book-row-action">
                                     <Form.Check 
@@ -179,7 +179,7 @@ export default function AdminDestacados() {
                                         checked={isFeatured}
                                         onChange={() => handleToggle(libro.id)}
                                         className="custom-switch"
-                                        aria-label={`Destacar ${libro.title}`}
+                                        aria-label={`Destacar ${libro.titulo}`}
                                     />
                                 </div>
                             </div>

@@ -24,14 +24,16 @@ function Catalogo() {
         const list = libros || [];
         let resultado = list.filter((libro) => {
             const coincideBusqueda = 
-                libro.title.toLowerCase().includes(busqueda.toLowerCase()) ||
-                libro.author.toLowerCase().includes(busqueda.toLowerCase());
+                libro.titulo.toLowerCase().includes(busqueda.toLowerCase()) ||
+                libro.autor.nombre.toLowerCase().includes(busqueda.toLowerCase());
             
-            const coincideDisponibilidad = !soloDisponibles || libro.disponible !== false;
+            const coincideDisponibilidad = !soloDisponibles || libro.disponible;
 
             let coincideCategoria = true;
-             if (categoria !== "Todas"){
-                coincideCategoria = libro.category.toLowerCase() === categoria;
+            if (categoria !== "Todas") {
+                coincideCategoria = !!libro.categorias?.some(
+                    (cat) => cat.nombre.toLowerCase() === categoria.toLowerCase()
+                );
             }
 
             return coincideBusqueda && coincideDisponibilidad && coincideCategoria;
@@ -40,20 +42,16 @@ function Catalogo() {
         // Ordenar
         return [...resultado].sort((a, b) => {
             if (ordenarPor === 'titulo-asc') {
-                return a.title.localeCompare(b.title);
+                return a.titulo.localeCompare(b.titulo);
             }
             if (ordenarPor === 'titulo-desc') {
-                return b.title.localeCompare(a.title);
+                return b.titulo.localeCompare(a.titulo);
             }
             if (ordenarPor === 'precio-asc') {
-                const precioA = a.precio ?? 0;
-                const precioB = b.precio ?? 0;
-                return precioA - precioB;
+                return a.precio - b.precio;
             }
             if (ordenarPor === 'precio-desc') {
-                const precioA = a.precio ?? 0;
-                const precioB = b.precio ?? 0;
-                return precioB - precioA;
+                return b.precio - a.precio;
             }
             return 0;
         });

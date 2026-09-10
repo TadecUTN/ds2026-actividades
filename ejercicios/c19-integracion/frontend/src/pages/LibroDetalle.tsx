@@ -43,7 +43,7 @@ function LibroDetalle() {
         );
     }
 
-    const sinopsisFicticia = `Una pieza literaria excepcional de ${libro.author}. Esta obra maestra cautiva desde la primera página con una narrativa envolvente, personajes profundamente delineados y giros reflexivos sobre la condición humana. Una lectura imprescindible para expandir la mente y enriquecer la biblioteca de todo lector exigente.`;
+    const sinopsisFicticia = `Una pieza literaria excepcional de ${libro.autor.nombre}. Esta obra maestra cautiva desde la primera página con una narrativa envolvente, personajes profundamente delineados y giros reflexivos sobre la condición humana. Una lectura imprescindible para expandir la mente y enriquecer la biblioteca de todo lector exigente.`;
 
     return (
         <Container className="my-5 animacion-entrada">
@@ -51,10 +51,10 @@ function LibroDetalle() {
                 <Row className="g-0">
                     {/* Columna Portada */}
                     <Col lg={5} md={12} className="d-flex align-items-center justify-content-center p-5 detalle-col-portada">
-                        {libro.cover ? (
+                        {libro.imagen ? (
                             <img
-                                src={libro.cover}
-                                alt={libro.title}
+                                src={libro.imagen}
+                                alt={libro.titulo}
                                 className="img-fluid rounded detalle-portada-img"
                             />
                         ) : (
@@ -77,9 +77,9 @@ function LibroDetalle() {
                                     </div>
                                 </div>
 
-                                <h1 className="display-5 fw-bold mb-2 detalle-titulo">{libro.title}</h1>
+                                <h1 className="display-5 fw-bold mb-2 detalle-titulo">{libro.titulo}</h1>
                                 <h4 className="mb-4 detalle-autor">
-                                    por {libro.author}
+                                    por {libro.autor.nombre}
                                 </h4>
                                 
                                 <hr className="detalle-divider" />

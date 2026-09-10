@@ -62,11 +62,10 @@ function LibroNuevo() {
         }
         await libroService.addLibro({
             id: Date.now(),
-            title: form.titulo.toUpperCase(), // Guarda el título en mayúsculas
-            author: form.autor.toUpperCase(),
-            category: form.categoria.toUpperCase(),
+            titulo: form.titulo.toUpperCase(),
+            autor: { nombre: form.autor.toUpperCase() },
             precio: Number(form.precio),
-            cover: IMG_PLACEHOLDER,
+            imagen: IMG_PLACEHOLDER,
             disponible: form.disponible,
         });
         navigate('/catalogo');
