@@ -1,0 +1,51 @@
+import Home from './pages/Home';
+import Layout from './components/Layout/Layout';
+import './App.css';
+import Catalogo from './pages/Catalogo';
+import LibroDetalle from './pages/LibroDetalle';
+import Contacto from './pages/Contacto';
+import LibroNuevo from './pages/LibroNuevo';
+import AdminDestacados from './pages/AdminDestacados';
+import Login from './pages/Login';
+import NotFound from './pages/NotFound';
+import RutaProtegida from './components/RutaProtegida';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+
+export default function App() {
+  const { pathname } = useLocation();
+
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return (
+    <Layout>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/catalogo' element={<Catalogo />} />
+        <Route
+          path='/libros/nuevo'
+          element={
+            <RutaProtegida soloAdmin>
+              <LibroNuevo />
+            </RutaProtegida>
+          }
+        />
+        <Route path='/contacto' element={<Contacto />} />
+        <Route path='/libros/:id' element={<LibroDetalle />} />
+        <Route
+          path='/admin/destacados'
+          element={
+            <RutaProtegida soloAdmin>
+              <AdminDestacados />
+            </RutaProtegida>
+          }
+        />
+        <Route path='/login' element={<Login />} />
+        <Route path='*' element={<NotFound />} />
+      </Routes>
+    </Layout>
+  );
+}

@@ -1,0 +1,150 @@
+@baseUrl = http://localhost:3000
+
+### ─────────────── PÚBLICO ───────────────
+
+### Hello
+GET {{baseUrl}}/
+
+### Listar libros (público)
+GET {{baseUrl}}/api/libros
+
+### Detalle de un libro (público)
+GET {{baseUrl}}/api/libros/1
+
+### Listar categorías (público)
+GET {{baseUrl}}/api/categorias
+
+
+### ─────────────── REGISTRO ───────────────
+
+### 1 · Registro OK → 201, y SIN passwordHash en la respuesta
+POST {{baseUrl}}/api/auth/registro
+Content-Type: application/json
+
+{ "nombre": "Ana", "email": "ana@libreria.test", "password": "Libreria2026" }
+
+### 2 · Mismo email otra vez → 409
+POST {{baseUrl}}/api/auth/registro
+Content-Type: application/json
+
+{ "nombre": "Ana", "email": "ana@libreria.test", "password": "Libreria2026" }
+
+### 3 · Datos inválidos → 400 con los 3 errores del password
+POST {{baseUrl}}/api/auth/registro
+Content-Type: application/json
+
+{ "nombre": "", "email": "no-es-mail", "password": "corta" }
+
+
+### ─────────────── LOGIN ───────────────
+
+### 4 · Mail que no existe → 401 "Credenciales inválidas"
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{ "email": "nadie@libreria.test", "password": "Libreria2026" }
+
+### 5 · Password incorrecta → 401, EL MISMO mensaje que el 4
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{ "email": "ana@libreria.test", "password": "Incorrecta1" }
+
+### 6 · Login CLIENTE → 200 con token
+# @name login
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{ "email": "ana@libreria.test", "password": "Libreria2026" }
+
+### El token queda guardado acá
+@token = {{login.response.body.token}}
+
+### 6b · Login ADMIN (del seed) → 200 con token
+# @name loginAdmin
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{ "email": "admin@libreria.test", "password": "Admin1234" }
+
+@tokenAdmin = {{loginAdmin.response.body.token}}
+
+
+### ─────────────── RUTAS PROTEGIDAS ───────────────
+
+### 7 · /auth/yo sin token → 401
+GET {{baseUrl}}/api/auth/yo
+
+### 8 · /auth/yo con token de CLIENTE → 200
+GET {{baseUrl}}/api/auth/yo
+Authorization: Bearer {{token}}
+
+### 9 · Crear libro SIN token → 401
+POST {{baseUrl}}/api/libros
+Content-Type: application/json
+
+{ "titulo": "Rayuela", "precio": 7000, "imagen": "https://…", "autorId": 1 }
+
+### 10 · Crear libro con token de CLIENTE → 403
+POST {{baseUrl}}/api/libros
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{ "titulo": "Rayuela", "precio": 7000, "imagen": "https://…", "autorId": 1 }
+
+### 11 · Crear libro con token de ADMIN → 201
+POST {{baseUrl}}/api/libros
+Content-Type: application/json
+Authorization: Bearer {{tokenAdmin}}
+
+{ "titulo": "Rayuela", "precio": 7000, "imagen": "https://…", "autorId": 1 }
+
+### 12 · ADMIN con body inválido → 400, no 403 (validate corre después de authorize)
+POST {{baseUrl}}/api/libros
+Content-Type: application/json
+Authorization: Bearer {{tokenAdmin}}
+
+{ "precio": -5 }
+
+### 13 · Borrar libro con token de CLIENTE → 403
+DELETE {{baseUrl}}/api/libros/1
+Authorization: Bearer {{token}}
+
+
+### ─────────────── ROMPER EL TOKEN (slide 42) ───────────────
+
+### 14 · Token con el payload modificado a mano → 401 "Token inválido"
+### Copiá tu token del 6, cambiale un caracter de la parte del MEDIO y pegalo acá
+GET {{baseUrl}}/api/auth/yo
+Authorization: Bearer yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sIjoiQ0xJRU5URSIsImlhdCI6MTc4ODIxMDg0NywiZXhwIjoxNzg4MjE4MDQ3fQ.KKdCsuOZaNdAj9lnJnEJSnWu1BHNzNw9T-bfhK5C6yw
+
+### 15 · Token que no es un token → 401 "Token inválido"
+GET {{baseUrl}}/api/auth/yo
+Authorization: Bearer no-es-un-token
+
+### 16 · Header sin el prefijo Bearer → 401 "Falta el token"
+GET {{baseUrl}}/api/auth/yo
+Authorization: {{token}}
+
+
+### ─────────────── ERRORES DE C17 (que ahora sí salen bien) ───────────────
+
+### 409 · Autor duplicado — en C17 esto devolvía HTML con un 500
+POST {{baseUrl}}/api/autores
+Content-Type: application/json
+Authorization: Bearer {{tokenAdmin}}
+
+{ "nombre": "Gabriel García Márquez", "nacionalidad": "Colombia" }
+
+### 400 · Id inválido
+GET {{baseUrl}}/api/libros/abc
+
+### 404 · Actualizar algo que no existe
+PUT {{baseUrl}}/api/libros/9999
+Content-Type: application/json
+Authorization: Bearer {{tokenAdmin}}
+
+{ "precio": 5000 }
+
+### 404 · Ruta inexistente (responde JSON)
+GET {{baseUrl}}/api/ruta-inexistente
