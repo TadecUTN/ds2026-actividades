@@ -11,6 +11,7 @@ import NotFound from './pages/NotFound';
 import RutaProtegida from './components/RutaProtegida';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
+import { AuthProvider } from './context/AuthContext';
 
 export default function App() {
   const { pathname } = useLocation();
@@ -21,31 +22,33 @@ export default function App() {
   }, [pathname]);
 
   return (
-    <Layout>
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/catalogo' element={<Catalogo />} />
-        <Route
-          path='/libros/nuevo'
-          element={
-            <RutaProtegida soloAdmin>
-              <LibroNuevo />
-            </RutaProtegida>
-          }
-        />
-        <Route path='/contacto' element={<Contacto />} />
-        <Route path='/libros/:id' element={<LibroDetalle />} />
-        <Route
-          path='/admin/destacados'
-          element={
-            <RutaProtegida soloAdmin>
-              <AdminDestacados />
-            </RutaProtegida>
-          }
-        />
-        <Route path='/login' element={<Login />} />
-        <Route path='*' element={<NotFound />} />
-      </Routes>
-    </Layout>
+    <AuthProvider>
+      <Layout>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/catalogo' element={<Catalogo />} />
+          <Route
+            path='/libros/nuevo'
+            element={
+              <RutaProtegida soloAdmin>
+                <LibroNuevo />
+              </RutaProtegida>
+            }
+          />
+          <Route
+            path='/admin/destacados'
+            element={
+              <RutaProtegida soloAdmin>
+                <AdminDestacados />
+              </RutaProtegida>
+            }
+          />
+          <Route path='/contacto' element={<Contacto />} />
+          <Route path='/libros/:id' element={<LibroDetalle />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+      </Layout>
+    </AuthProvider>
   );
 }

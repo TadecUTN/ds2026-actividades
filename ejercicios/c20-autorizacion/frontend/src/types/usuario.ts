@@ -1,6 +1,1 @@
-export interface UsuarioSesion {
-    id: number;
-    email: string;
-    nombre: string;
-    rol: string;
-}
+export type { Usuario, UsuarioSesion, Sesion, Credenciales, Rol } from './sesionType';
