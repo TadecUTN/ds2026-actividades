@@ -4,7 +4,7 @@ import { useAuth } from '../../hooks/useAuth';
 import '../../assets/shared/Header.css';
 
 function MyNavbar() {
-    const { usuario, esAdmin, logout } = useAuth();
+    const { usuario, tieneRol, logout } = useAuth();
     const navigate = useNavigate();
 
     const manejarSesion = () => {
@@ -36,10 +36,10 @@ function MyNavbar() {
                     <Nav className="ms-auto align-items-center">
                         <NavLink to='/' className={({ isActive }) => `nav-link nav-link-custom ${isActive ? 'active' : ''}`}>Home</NavLink>
                         <NavLink to='/catalogo' className={({ isActive }) => `nav-link nav-link-custom ${isActive ? 'active' : ''}`}>Catálogo</NavLink>
-                        {esAdmin && (
+                        {tieneRol('ADMIN') && (
                             <>
                                 <NavLink to='/libros/nuevo' className={({ isActive }) => `nav-link nav-link-custom ${isActive ? 'active' : ''}`}>
-                                    Nuevo Libro
+                                    Nuevo libro
                                 </NavLink>
                                 <NavLink to='/admin/destacados' className={({ isActive }) => `nav-link nav-link-custom ${isActive ? 'active' : ''}`}>
                                     Gestionar Destacados
