@@ -2,19 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button, Container, Alert, Spinner } from 'react-bootstrap';
 import { loginSchema } from '../schemas/loginSchema';
-import { apiFetch } from '../services/api';
 import { useAuth } from '../hooks/useAuth';
 import '../assets/login/Login.css';
-
-interface LoginRespuesta {
-    token: string;
-    usuario: {
-        id: number;
-        email: string;
-        nombre: string;
-        rol: string;
-    };
-}
 
 function Login() {
     const navigate = useNavigate();
@@ -61,12 +50,7 @@ function Login() {
 
         setIsSubmitting(true);
         try {
-            const respuesta = await apiFetch<LoginRespuesta>('/auth/login', {
-                method: 'POST',
-                body: JSON.stringify(form),
-            });
-
-            login(respuesta.token, respuesta.usuario);
+            await login(form);
             navigate('/catalogo');
         } catch (error: unknown) {
             const mensaje = error instanceof Error ? error.message : 'Error al iniciar sesión';

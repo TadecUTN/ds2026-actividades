@@ -1,15 +1,19 @@
-import { Navbar, Container, Nav, Button } from "react-bootstrap";
+import { Navbar, Container, Nav } from "react-bootstrap";
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import '../../assets/shared/Header.css';
 
 function MyNavbar() {
-    const { usuario, estaAutenticado, esAdmin, logout } = useAuth();
+    const { usuario, esAdmin, logout } = useAuth();
     const navigate = useNavigate();
 
-    const handleLogout = () => {
-        logout();
-        navigate('/login');
+    const manejarSesion = () => {
+        if (usuario) {
+            logout();
+            navigate('/');
+        } else {
+            navigate('/login');
+        }
     };
 
     return (
@@ -43,26 +47,18 @@ function MyNavbar() {
                             </>
                         )}
                         <NavLink to='/contacto' className={({ isActive }) => `nav-link nav-link-custom ${isActive ? 'active' : ''}`}>Contacto</NavLink>
-                        {estaAutenticado ? (
-                            <div className="d-flex align-items-center ms-lg-3 my-2 my-lg-0 navbar-auth-info">
-                                <span className="navbar-user-badge">
-                                    {usuario?.nombre || 'Usuario'}
-                                    <span className="navbar-role-pill">{usuario?.rol || 'USER'}</span>
-                                </span>
-                                <Button
-                                    variant="outline-secondary"
-                                    size="sm"
-                                    onClick={handleLogout}
-                                    className="navbar-btn-logout ms-2"
-                                >
-                                    Cerrar Sesión
-                                </Button>
-                            </div>
-                        ) : (
-                            <NavLink to='/login' className={({ isActive }) => `nav-link nav-link-custom ${isActive ? 'active' : ''}`}>
-                                Iniciar Sesión
-                            </NavLink>
+                        {usuario && (
+                            <Navbar.Text className="ms-lg-3 me-2">
+                                Hola, {usuario.nombre}
+                            </Navbar.Text>
                         )}
+                        <button
+                            type="button"
+                            className="btn-login btn btn-outline-secondary btn-sm navbar-btn-logout ms-2"
+                            onClick={manejarSesion}
+                        >
+                            {usuario ? 'Salir' : 'Ingresar'}
+                        </button>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
