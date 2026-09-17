@@ -17,6 +17,7 @@ export interface AuthContextType {
     logout: () => void;
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
@@ -58,6 +59,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setToken(null);
         setUsuario(null);
     };
+
+    useEffect(() => {
+        window.addEventListener('sesion-expirada', logout);
+        return () => window.removeEventListener('sesion-expirada', logout);
+    }, []);
 
     const tieneRol = (rol: Rol): boolean => {
         return usuario?.rol === rol;
