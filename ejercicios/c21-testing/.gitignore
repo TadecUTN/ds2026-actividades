@@ -1,0 +1,11 @@
+node_modules/
+.env
+.env.local
+dist/
+build/
+src/generated/
+**/src/generated/
+.vscode/
+.idea/
+.DS_Store
+.scratch

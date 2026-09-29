@@ -1,0 +1,145 @@
+/* Estilos generales de la aplicación */
+h1, h2, h3, .fuente-titulo {
+    font-family: var(--fuente-titulos);
+    color: var(--color-texto-principal);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+h2 {
+    position: relative;
+    padding-bottom: 12px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-primario);
+    border-radius: 2px;
+}
+
+/* Tarjetas Estilo Editorial */
+.tarjeta-vidrio {
+    background: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-borde);
+    box-shadow: 0 4px 20px var(--color-sombra);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.tarjeta-vidrio:hover {
+    border-color: var(--color-borde-enfocado);
+    box-shadow: 0 12px 28px rgba(27, 67, 50, 0.12);
+    transform: translateY(-4px);
+}
+
+/* Botones Editorial */
+.btn-oro-primario {
+    background: linear-gradient(135deg, var(--color-primario) 0%, #123023 100%);
+    border: none;
+    color: #ffffff !important;
+    font-family: var(--fuente-cuerpo);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    padding: 10px 24px;
+    border-radius: 6px;
+    box-shadow: 0 4px 14px rgba(27, 67, 50, 0.25);
+    transition: all 0.3s ease;
+}
+
+.btn-oro-primario:hover {
+    background: linear-gradient(135deg, var(--color-primario-hover) 0%, var(--color-primario) 100%);
+    box-shadow: 0 6px 18px rgba(27, 67, 50, 0.35);
+    transform: translateY(-1px);
+}
+
+.btn-oro-primario:active {
+    transform: translateY(1px);
+}
+
+.btn-oro-esquema {
+    background: transparent;
+    border: 2px solid var(--color-primario);
+    color: var(--color-primario) !important;
+    font-family: var(--fuente-cuerpo);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    padding: 8px 22px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.btn-oro-esquema:hover {
+    background: var(--color-primario);
+    color: #ffffff !important;
+    border-color: var(--color-primario);
+}
+
+/* Banner de Promoción */
+.banner-promo {
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+    border: 1px solid #fcd34d;
+    border-radius: var(--radio-borde);
+    color: #78350f;
+    box-shadow: 0 4px 20px rgba(180, 83, 9, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-promo::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(180, 83, 9, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+/* Controles de Formulario Premium */
+.form-control-premium {
+    background-color: #ffffff !important;
+    border: 1px solid var(--color-borde) !important;
+    color: var(--color-texto-principal) !important;
+    border-radius: 8px !important;
+    padding: 12px 16px !important;
+    font-family: var(--fuente-cuerpo) !important;
+    transition: all 0.3s ease !important;
+}
+
+.form-control-premium:focus {
+    background-color: #ffffff !important;
+    border-color: var(--color-primario) !important;
+    box-shadow: 0 0 0 3px rgba(27, 67, 50, 0.15) !important;
+    outline: none;
+}
+
+.form-label-premium {
+    font-family: var(--fuente-cuerpo);
+    color: var(--color-primario);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animacion-entrada {
+    animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

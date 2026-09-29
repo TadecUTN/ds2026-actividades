@@ -1,0 +1,39 @@
+.catalogo-subtitle {
+    color: var(--color-texto-secundario);
+}
+
+.catalogo-filter-card {
+    background: #ffffff !important;
+    border: 1px solid var(--color-borde);
+}
+
+.catalogo-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%231b4332' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e") !important;
+    cursor: pointer;
+}
+
+.catalogo-option {
+    background: #ffffff !important;
+    color: var(--color-texto-principal) !important;
+}
+
+.catalogo-checkbox {
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: var(--color-texto-principal);
+}
+
+.catalogo-results-count {
+    color: var(--color-texto-secundario);
+    font-size: 0.9rem;
+}
+
+.catalogo-no-results-icon {
+    font-size: 3rem;
+    color: var(--color-primario);
+}
+
+.catalogo-no-results-text {
+    color: var(--color-texto-secundario);
+    max-width: 400px;
+}
