@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import type { Libro } from '../types/libro';
+import { formatearPrecio } from '../utils/formatearPrecio';
 import '../assets/shared/LibroCard.css';
 
-function LibroCard({ id, titulo, autor, imagen }: Libro) {
+function LibroCard({ id, titulo, autor, imagen, precio }: Libro) {
     const [imgError, setImgError] = useState(false);
 
     const hasCover = imagen && imagen.trim() !== '' && !imgError;
@@ -40,9 +41,14 @@ function LibroCard({ id, titulo, autor, imagen }: Libro) {
                     <Card.Title className="fw-bold mb-2 tarjeta-libro-title">
                         {titulo}
                     </Card.Title>
-                    <Card.Text className="tarjeta-libro-author">
+                    <Card.Text className="tarjeta-libro-author mb-1">
                         {autor.nombre}
                     </Card.Text>
+                    {precio !== undefined && (
+                        <div className="tarjeta-libro-precio fw-bold mt-1 text-primary">
+                            {formatearPrecio(precio)}
+                        </div>
+                    )}
                 </div>
                 <Link 
                     to={`/libros/${id}`}
