@@ -9,7 +9,7 @@ export const libroSchema = z.object({
         .max(40, 'El nombre del autor es demasiado largo'),
     categorias: z.array(z.string().trim())
         .min(1, 'Debes seleccionar al menos una categoría'),
-    precio: z.number()
+    precio: z.coerce.number()
         .gte(1, 'El producto debe tener un precio positivo'),
     disponible: z.boolean(),
     imagen: z.string().trim().url('Debe ser una URL válida').or(z.literal('')).optional(),
