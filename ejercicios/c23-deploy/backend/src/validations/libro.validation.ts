@@ -2,6 +2,7 @@ import { z } from "zod";
 
 export const libroCreateSchema = z.object({
   titulo:     z.string().trim().min(1, "El titulo es obligatorio").max(200),
+  sinopsis:   z.string().trim().max(2000, "La sinopsis no puede superar los 2000 caracteres").optional().or(z.literal("")),
   precio:     z.number().positive("El precio debe ser mayor a 0"),
   imagen:     z.string().trim().min(1).optional().or(z.literal("")),
   disponible: z.boolean().optional(),   //el default lo pone automaticamente prisma

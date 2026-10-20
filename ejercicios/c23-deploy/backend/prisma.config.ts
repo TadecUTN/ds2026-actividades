@@ -1,5 +1,4 @@
 import { defineConfig } from "prisma/config";
-import { PrismaClient } from "./src/generated/prisma/client";
 
 export default defineConfig({
   schema: "prisma/schema.prisma",

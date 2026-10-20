@@ -13,6 +13,14 @@ describe("libroCreateSchema", () => {
     const r = libroCreateSchema.safeParse({ ...libroValido, titulo: " Rayuela "});
     if (r.success) expect(r.data.titulo).toBe("Rayuela");
   });
+  it("acepta sinopsis de hasta 2000 caracteres y rechaza si supera 2000", () => {
+    const ok = libroCreateSchema.safeParse({ ...libroValido, sinopsis: "a".repeat(2000) });
+    expect(ok.success).toBe(true);
+
+    const invalido = libroCreateSchema.safeParse({ ...libroValido, sinopsis: "a".repeat(2001) });
+    expect(invalido.success).toBe(false);
+    if (!invalido.success) expect(invalido.error.issues[0].path).toEqual(["sinopsis"]);
+  });
 });
 
 describe("idParamSchema", () => {

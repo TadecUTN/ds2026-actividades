@@ -26,6 +26,7 @@ const DEFAULT_IMAGEN = "https://placehold.co/300x400?text=Lectura+Inteligente";
 
 export interface CrearLibroInput {
   titulo: string;
+  sinopsis?: string | null;
   precio: number;
   imagen?: string | null;
   disponible?: boolean;
@@ -57,6 +58,11 @@ export async function create(datos: CrearLibroInput): Promise<LibroConAutor> {
     ? datos.imagen.trim()
     : DEFAULT_IMAGEN;
 
+  const sinopsisFinal =
+    typeof datos.sinopsis === "string" && datos.sinopsis.trim() !== ""
+      ? datos.sinopsis.trim()
+      : null;
+
   const connectOrCreateCategorias = nombresCategorias.map((nombre) => ({
     where: { nombre },
     create: { nombre },
@@ -65,6 +71,7 @@ export async function create(datos: CrearLibroInput): Promise<LibroConAutor> {
   return prisma.libro.create({
     data: {
       titulo: datos.titulo,
+      sinopsis: sinopsisFinal,
       precio: datos.precio,
       imagen: imagenFinal,
       disponible: datos.disponible ?? true,
