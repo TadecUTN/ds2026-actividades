@@ -22,6 +22,7 @@ function LibroNuevo() {
     const [form, setForm] = useState({
         titulo: '',
         autor: '',
+        sinopsis: '',
         precio: '',
         imagen: '',
         disponible: true,
@@ -216,6 +217,7 @@ function LibroNuevo() {
         const resultado = libroSchema.safeParse({
             titulo: form.titulo,
             autor: form.autor,
+            sinopsis: form.sinopsis,
             categorias: categoriasSeleccionadas,
             precio: form.precio === '' ? undefined : Number(form.precio),
             disponible: form.disponible,
@@ -264,9 +266,11 @@ function LibroNuevo() {
             }
 
             const imagenFinal = form.imagen.trim() !== '' ? form.imagen.trim() : IMG_PLACEHOLDER;
+            const sinopsisFinal = form.sinopsis.trim();
 
             await libroService.addLibro({
                 titulo: form.titulo.toUpperCase(),
+                ...(sinopsisFinal !== '' ? { sinopsis: sinopsisFinal } : {}),
                 precio: Number(form.precio),
                 imagen: imagenFinal,
                 disponible: form.disponible,
@@ -455,6 +459,29 @@ function LibroNuevo() {
                                 {errores.categorias}
                             </div>
                         )}
+                    </Form.Group>
+
+                    <Form.Group className="mb-4">
+                        <div className="d-flex justify-content-between align-items-baseline mb-1">
+                            <Form.Label className="form-label-premium mb-0">Sinopsis</Form.Label>
+                            <span className="small text-muted">
+                                {form.sinopsis.length}/2000 caracteres
+                            </span>
+                        </div>
+                        <Form.Control
+                            as="textarea"
+                            rows={4}
+                            name="sinopsis"
+                            value={form.sinopsis}
+                            onChange={handleChange}
+                            maxLength={2000}
+                            isInvalid={!!errores.sinopsis}
+                            className="form-control-premium"
+                            placeholder="Escribe una breve descripción o sinopsis del libro (máx. 2000 caracteres)..."
+                        />
+                        <Form.Control.Feedback type="invalid" className="nuevo-libro-feedback-error">
+                            {errores.sinopsis}
+                        </Form.Control.Feedback>
                     </Form.Group>
 
                     <Form.Group className="mb-4">

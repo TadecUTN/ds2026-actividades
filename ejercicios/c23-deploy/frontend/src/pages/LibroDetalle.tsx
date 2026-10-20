@@ -44,6 +44,7 @@ function LibroDetalle() {
     }
 
     const sinopsisFicticia = `Una pieza literaria excepcional de ${libro.autor.nombre}. Esta obra maestra cautiva desde la primera página con una narrativa envolvente, personajes profundamente delineados y giros reflexivos sobre la condición humana. Una lectura imprescindible para expandir la mente y enriquecer la biblioteca de todo lector exigente.`;
+    const sinopsisMostrar = libro.sinopsis?.trim() ? libro.sinopsis : sinopsisFicticia;
 
     return (
         <Container className="my-5 animacion-entrada">
@@ -86,7 +87,7 @@ function LibroDetalle() {
                                 
                                 <h6 className="form-label-premium mb-2">Sinopsis</h6>
                                 <p className="mb-4 detalle-sinopsis">
-                                    {sinopsisFicticia}
+                                    {sinopsisMostrar}
                                 </p>
                             </div>
 

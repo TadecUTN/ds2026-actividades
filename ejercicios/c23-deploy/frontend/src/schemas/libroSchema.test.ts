@@ -40,4 +40,21 @@ describe('libroSchema del frontend (unitario puro)', () => {
     const res = libroSchema.safeParse(libroValido);
     expect(res.success).toBe(true);
   });
+
+  it('acepta sinopsis de hasta 2000 caracteres y rechaza más de 2000', () => {
+    const ok = libroSchema.safeParse({
+      ...libroValido,
+      sinopsis: 'a'.repeat(2000),
+    });
+    expect(ok.success).toBe(true);
+
+    const invalido = libroSchema.safeParse({
+      ...libroValido,
+      sinopsis: 'a'.repeat(2001),
+    });
+    expect(invalido.success).toBe(false);
+    if (!invalido.success) {
+      expect(invalido.error.issues.map((i) => i.path[0])).toContain('sinopsis');
+    }
+  });
 });
