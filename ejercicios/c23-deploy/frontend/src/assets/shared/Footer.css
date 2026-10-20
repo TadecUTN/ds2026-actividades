@@ -1,0 +1,38 @@
+.footer-description {
+    line-height: 1.7;
+}
+
+.footer-social-icon {
+    opacity: 0.85;
+}
+
+/* Footer Estilizado */
+.footer-personalizado {
+    background: #ede8dc;
+    border-top: 1px solid var(--color-borde);
+    color: var(--color-texto-secundario);
+    padding: 60px 0 30px;
+    margin-top: 80px;
+    font-family: var(--fuente-cuerpo);
+}
+
+.footer-personalizado h6 {
+    color: var(--color-primario);
+    font-family: var(--fuente-titulos);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.footer-link {
+    color: var(--color-texto-secundario);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.footer-link:hover {
+    color: var(--color-primario);
+    transform: translateX(4px);
+}

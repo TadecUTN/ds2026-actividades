@@ -1,0 +1,43 @@
+:root {
+    /* Paleta Editorial / Librería Clásica Clara */
+    --color-fondo: #f7f4ee;
+    --color-superficie: #ffffff;
+    --color-superficie-brillante: #f0ece1;
+    --color-primario: #1b4332;
+    --color-primario-hover: #2d5a47;
+    --color-acento: #b45309;
+    --color-acento-suave: #fdf6e7;
+    --color-borde: #e2dbcc;
+    --color-borde-enfocado: #1b4332;
+    --color-texto-principal: #1c1917;
+    --color-texto-secundario: #68625b;
+    --color-sombra: rgba(44, 34, 22, 0.08);
+    --fuente-titulos: 'Playfair Display', serif;
+    --fuente-cuerpo: 'Montserrat', sans-serif;
+    --radio-borde: 10px;
+}
+
+body {
+    background-color: var(--color-fondo);
+    color: var(--color-texto-principal);
+    font-family: var(--fuente-cuerpo);
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--color-fondo);
+}
+::-webkit-scrollbar-thumb {
+    background: #d8d0be;
+    border: 2px solid var(--color-fondo);
+    border-radius: var(--radio-borde);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primario);
+}

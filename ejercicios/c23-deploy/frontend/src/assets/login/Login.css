@@ -1,0 +1,14 @@
+.login-card {
+    max-width: 480px;
+    background: #ffffff !important;
+    border: 1px solid var(--color-borde);
+}
+
+.login-titulo {
+    font-size: 1.8rem !important;
+    color: var(--color-texto-principal);
+}
+
+.login-feedback-error {
+    font-size: 0.825rem !important;
+}
