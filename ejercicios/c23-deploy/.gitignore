@@ -4,6 +4,7 @@ node_modules/
 dist/
 build/
 src/generated/
+backend/src/generated
 **/src/generated/
 .vscode/
 .idea/
