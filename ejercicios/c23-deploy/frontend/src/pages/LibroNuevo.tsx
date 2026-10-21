@@ -269,7 +269,7 @@ function LibroNuevo() {
             const sinopsisFinal = form.sinopsis.trim();
 
             await libroService.addLibro({
-                titulo: form.titulo.toUpperCase(),
+                titulo: form.titulo,
                 ...(sinopsisFinal !== '' ? { sinopsis: sinopsisFinal } : {}),
                 precio: Number(form.precio),
                 imagen: imagenFinal,
@@ -279,7 +279,7 @@ function LibroNuevo() {
                 autor: { id: finalAutorId, nombre: form.autor.trim() },
             });
 
-            const tituloConfirmado = form.titulo.toUpperCase();
+            const tituloConfirmado = form.titulo;
             setMensajeExito(`¡El libro "${tituloConfirmado}" fue agregado con éxito al catálogo real!`);
             setTimeout(() => {
                 navigate('/catalogo', { state: { libroAgregado: tituloConfirmado } });
